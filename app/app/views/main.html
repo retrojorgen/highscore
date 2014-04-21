@@ -17,11 +17,16 @@
 </div>
 </div>
 
-<h2>Mest populære spill!</h2>
+<h2>Mest populære brett!</h2>
 <div class="row">
 	<div class="col-md-4" ng-repeat="game in best">
 		<div class="highscore-shortlist-container">
-			<h3>{{game.game}}</h3>
+      <a href="/#/consoles/{{getUrlFriendly(game.system)}}/{{getUrlFriendly(game.game)}}">
+        <h4>{{game.game}}</h4>
+      </a>
+      <a href="/#/consoles/{{getUrlFriendly(game.system)}}/{{getUrlFriendly(game.game)}}/{{getUrlFriendly(game.level)}}">
+			 <h3>{{game.level}}</h3>
+      </a>
 			<table class="table table-striped">
 				<tr>
 					<th>#</th><th>record</th><th>player</th>
@@ -48,7 +53,8 @@
 <div class="row">
 	<div class="col-md-4" ng-repeat="game in worst">
 		<div class="highscore-shortlist-container">
-			<h3>{{game.game}}</h3>
+			<h4>{{game.game}}</h4>
+      <h3>{{game.level}}</h3>
 			<table class="table table-striped">
 				<tr>
 					<th>#</th><th>record</th><th>player</th>

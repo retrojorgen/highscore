@@ -191,6 +191,28 @@ body {
         border: 1px solid rgba(0,0,0,0.2);
         @include border-radius(8px);
 
+        .level-image {
+            position: relative;
+            overflow: hidden;
+            img {
+                min-width: 100%;
+            }
+            .number-one {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 30px 10px 30px;
+                background-color: #581dde;
+                color: white;
+                text-align: center;
+                @include border-radius(100%);
+                .one {
+                    font-size: 40px;
+                    margin-top: -10px;
+                }
+            }
+        }
+
         ol {
             border-top: 2px solid rgba(0,0,0,0.2);
             li {
@@ -206,6 +228,36 @@ body {
                     font-size: 18px;
                 }
             }
+        }
+    }
+}
+
+.circle {
+    background-color: grey;
+    padding: 4px;
+    @include border-radius(50%);
+    color: white;
+
+    &.games {
+        background-color: #a43f8b;
+    }
+
+    &.levels {
+        background-color: #5e3fa4;
+    }
+
+    &.records {
+        background-color: #581dde;
+    }
+}
+
+.consoles {
+    h3 {
+        font-size: 18px;
+    }
+    div {
+        div {
+            line-height: 32px;
         }
     }
 }

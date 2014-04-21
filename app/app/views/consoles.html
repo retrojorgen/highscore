@@ -1,0 +1,10 @@
+<div class="row consoles">
+  <div class="col-md-4" ng-repeat="console in consoles">
+      <h2>{{console.system}}</h2></a>
+      <div class="" ng-repeat="game in console.games">
+        <a href="/#/consoles/{{getUrlFriendly(console.system)}}/{{getUrlFriendly(game.game)}}"><h3>{{game.game}}</h3></a>
+        <div><span class="circle levels">{{game.levels}}</span> Brett er lagt inn.</div>
+        <div><span class="circle records">{{game.records}}</span> Rekorder har blitt lagt inn.</div>
+      </div>
+  </div>
+</div>

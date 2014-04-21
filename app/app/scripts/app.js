@@ -10,16 +10,20 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('consoles/:console', {
-        templateUrl: 'views/console.html',
-        controller: 'RecordsconsoleCtrl'
+      .when('/consoles', {
+        templateUrl: 'views/consoles.html',
+        controller: 'ConsolesCtrl'
       })
-      .when('consoles/:console/:game', {
+      .when('/consoles/:console', {
+        templateUrl: 'views/consoles.html',
+        controller: 'ConsolesCtrl'
+      })
+      .when('/consoles/:console/:game', {
         templateUrl: 'views/game.html',
         controller: 'RecordsgameCtrl'
       })
-      .when('consoles/:console/:game/:level', {
-        templateUrl: 'views/game.html',
+      .when('/consoles/:console/:game/:level', {
+        templateUrl: 'views/level.html',
         controller: 'RecordslevelCtrl'
       })
       .otherwise({

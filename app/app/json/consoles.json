@@ -1,38 +1,122 @@
 [
 	{
 		"system": "Nintendo 64",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	},
 	{
 		"system": "Nintendo",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	},
 	{
 		"system": "Super Nintendo",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	},
 	{
 		"system": "Sega Master System",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	},
 	{
 		"system": "Sega Mega Drive",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	},
 	{
 		"system": "Playstation",
-		"games": 10,
-		"levels": 20,
-		"records": 100
+		"games": [
+				{
+					"game": "Super Mario Kart",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Super Mario World",
+					"levels": 20,
+					"records": 10
+				},
+				{
+					"game": "Yoshis Island",
+					"levels": 20,
+					"records": 10
+				}
+		]
 	}
 ]
