@@ -1,0 +1,11 @@
+<form>
+   <input type="file" fileread="uploadme.src"/>
+   <ul>
+    <li ng-repeat="image in images">
+      <div class="upload-image-container">
+        <img src="{{image}}">
+      </div>
+    </li>
+   </ul>
+   <button type="submit" ng-click="submitRecord()">Send inn</button>
+</form>

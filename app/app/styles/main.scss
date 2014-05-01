@@ -261,3 +261,15 @@ body {
         }
     }
 }
+
+
+.upload-image-container {
+    width: 300px;
+    height: 150px;
+    border: 1px solid black;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+    }
+}

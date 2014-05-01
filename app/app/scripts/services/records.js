@@ -31,4 +31,8 @@ angular.module('highscoreApp')
       id = 10;
       return $http.get('json/recordsLevel.json');
     };
+    this.uploadRecord = function(record) {
+      console.log(record);
+      return $http.post('http://127.0.0.1:8080/api/records', record);
+    };
   });

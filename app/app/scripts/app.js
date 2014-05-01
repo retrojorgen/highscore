@@ -10,6 +10,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/record', {
+        templateUrl: 'views/record.html',
+        controller: 'RecordCtrl'
+      })
       .when('/consoles', {
         templateUrl: 'views/consoles.html',
         controller: 'ConsolesCtrl'
