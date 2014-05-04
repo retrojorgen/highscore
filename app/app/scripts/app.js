@@ -2,7 +2,8 @@
 
 angular
   .module('highscoreApp', [
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

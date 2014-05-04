@@ -14,7 +14,6 @@ angular.module('highscoreApp')
           var reader = new FileReader();
           reader.onload = function (loadEvent) {
             scope.$apply(function () {
-              console.log(loadEvent.target);
               scope.fileread = loadEvent.target.result;
               scope.$parent.addImage(loadEvent.target.result);
             });

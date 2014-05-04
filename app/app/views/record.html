@@ -1,11 +1,72 @@
-<form>
-   <input type="file" fileread="uploadme.src"/>
-   <ul>
-    <li ng-repeat="image in images">
-      <div class="upload-image-container">
-        <img src="{{image}}">
-      </div>
+<h2>Legg inn ny rekord!</h2>
+<form role="form">
+  <div class="form-group">
+    <label for="nickname-input">Hvilket kallenavn skal vises?</label>
+    <input type="text" ng-model="record.nickname" class="form-control" id="nickname-input" placeholder="Eks. Retrojorgen">
+  </div>
+  <div class="form-group">
+    <label for="email-input">E-postadressen din</label>
+    <input type="text" ng-model="record.email" class="form-control" id="email-input" placeholder="Eks. retrojorgen@retrojorgen.com">
+    <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer.</p>
+  </div>
+  <div ng-show="record.nickname && record.email" class="form-group">
+    <label for="level-input">Hva slags rekord?</label>
+      <select ng-model="record.type" multiple class="form-control">
+        <option value="shortestTime">Kortest tid</option>
+        <option value="longestTime">Lengst tid</option>
+        <option value="highestScore">Høyest poengsum</option>
+        <option value="lowestScore">Lavest poengsum</option>
+      </select>
+  </div>
+  <div ng-show="record.type == 'shortestTime' || record.type == 'longestTime'" class="form-group">
+    <label for="level-input">Rekorden gjelder</label>
+      <select ng-model="record.lap" multiple class="form-control">
+        <option value="round">Rundetid</option>
+        <option value="track">Hele banen / brettet</option>
+        <option value="game">Hele spillet</option>
+        
+      </select>
+  </div>
+  <div ng-show="record.type == 'shortestTime' && record.lap || record.type == 'longestTime' && record.lap" class="form-group">
+    <label for="level-input">Tiden din (TIMER:MINUTTER:SEKUNDER:MILLISEKUNDER) Eks 00:01:23:73</label>
+    <input type="text" ng-model="record.time" class="form-control" id="level-input" placeholder="Eks 00:01:23:73">
+  </div>
+  <div ng-show="record.type == 'highestScore' || record.type == 'lowestScore'" class="form-group">
+    <label for="level-input">Poengene dine</label>
+    <input type="text" ng-model="record.score" class="form-control" id="level-input" placeholder="Eks 1251251242">
+  </div>
+  <div ng-show="record.time || record.score" class="form-group">
+    {{selected}}
+    <label for="level-input">Hva heter brettet / banen?</label>
+    <input type="text" ng-model="record.level" typeahead="level.level for level in levels | filter:$viewValue" typeahead-on-select="onSelect($item, $model, $label)" class="form-control">
+  </div>
+  <p class="help-block" ng-show="images.length > 4">Du har valgt 4 bilder. Hvis du vil laste opp andre bilder, må du slette et av bildene du har valgt.</p>
+  <div ng-show="record.level" class="form-group">
+    <label for="game-input">Hvilket spill?</label>
+    <input ng-model="record.game" type="text" class="form-control" id="game-input" placeholder="Skriv inn spill">
+  </div>
+  <div ng-show="record.level" class="form-group">
+    <label for="console-input">Til hvilken konsoll?</label>
+    <input ng-model="record.console" type="text" class="form-control" id="console-input" placeholder="Skriv inn konsollen">
+  </div>
+  <div ng-show="record.level" class="form-group">
+    <label for="image-upload-input">Last opp bilder</label>
+    <input ng-show="images.length <= 4" type="file" id="image-upload-input" fileread="uploadme.src">
+    <p class="help-block" ng-show="images.length > 4">Du har valgt 4 bilder. Hvis du vil laste opp andre bilder, må du slette et av bildene du har valgt.</p>
+    <p class="help-block" ng-show="images.length <= 4">Last opp 2-4 bilder fra forskjellige vinkler som viser rekorden din.</p>
+   <ul class="image-upload-list">
+    <li ng-repeat="image in record.images" class="image-upload-container">
+        <div class="image-container">
+          <img class="image" src="{{image.image}}">
+        </div>
+        <label class="comment">
+          Legg til en kommentar (valgfritt)
+          <textarea ng-model="image.comment" class="form-control" rows="3"></textarea>
+        </label>
     </li>
    </ul>
-   <button type="submit" ng-click="submitRecord()">Send inn</button>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" ng-click="submitRecord()">Send til godkjenning</button>
 </form>

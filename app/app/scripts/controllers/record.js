@@ -2,19 +2,47 @@
 
 angular.module('highscoreApp')
   .controller('RecordCtrl', function ($scope, Records) {
+    $scope.record = {};
+    $scope.record.images = [];
     $scope.uploadme = {};
     $scope.uploadme.src = '';
+    $scope.levels = [];
+    $scope.levelsList = [];
+    $scope.games = [];
+    $scope.consoles = [];
+
+    Records.getLevels()
+      .success(function ( data ) {
+        $scope.levels = data;
+        _.each($scope.levels, function(level) {
+          $scope.games.push(level.game);
+          $scope.consoles.push(level.console);
+          $scope.levelsList.push(level.level);
+        });
+        $scope.games = _.uniq($scope.games);
+        $scope.consoles = _.uniq($scope.consoles);
+        $scope.levelsList = _.uniq($scope.levelsList);
+      });
 
     $scope.images = [];
 
     $scope.addImage = function ( imageSrc ) {
-      $scope.images.push(imageSrc);
+      $scope.record.images.push({
+        image: imageSrc,
+        comment: ''
+      });
     };
 
     $scope.submitRecord = function () {
-      Records.uploadRecord($scope.images)
+      Records.submitRecord($scope.record)
         .success(function(data) {
           console.log(data);
         });
     };
+
+    $scope.onSelect = function ($item) {
+      $scope.record.game = $item.game;
+      $scope.record.console = $item.console;
+    };
+
   });
