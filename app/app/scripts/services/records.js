@@ -7,6 +7,10 @@ angular.module('highscoreApp')
       return $http.get('json/allrecords.json');
     };
 
+    this.getUnapprovedRecords = function() {
+      return $http.get('http://127.0.0.1:8080/api/records/unapproved');
+    };
+
     this.getRecords = function(id) {
       id = 10;
       return $http.get('json/records.json');

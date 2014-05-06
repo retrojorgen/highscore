@@ -15,6 +15,10 @@ angular
         templateUrl: 'views/record.html',
         controller: 'RecordCtrl'
       })
+      .when('/approve', {
+        templateUrl: 'views/approve.html',
+        controller: 'ApproveCtrl'
+      })
       .when('/consoles', {
         templateUrl: 'views/consoles.html',
         controller: 'ConsolesCtrl'

@@ -28,10 +28,10 @@
         next();
       },
 
-      searchLevels = function (query, callback) {
+      searchIndex = function (index, query, callback) {
         // search for documents (and also promises!!)
         client.search({
-          index: 'levels',
+          index: index,
           size: 50,
           body: {
             query: query
@@ -103,7 +103,7 @@
 
   app.get('/api/levels', function(req, res) {
     var levels = [];
-    searchLevels({
+    searchIndex('levels', {
             'match_all': {}
         },function(data) {
             _.each(data, function(level){
@@ -112,6 +112,23 @@
             res.send(JSON.stringify(levels));
         });
   });
+
+
+  app.get('/api/records/unapproved', function(req, res) {
+      var unApprovedRecords = [];
+
+      searchIndex('records', {
+              'match': {
+                status: 'unapproved'
+              }
+          },function(data) {
+              _.each(data, function(record){
+                record['_source']['_id'] = record._id;
+                unApprovedRecords.push(record['_source']);
+              });
+              res.send(JSON.stringify(unApprovedRecords));
+          });
+    });
 
   app.post('/api/record', function(req, res) {
     var record = req.body;

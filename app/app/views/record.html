@@ -11,7 +11,7 @@
   </div>
   <div ng-show="record.nickname && record.email" class="form-group">
     <label for="level-input">Hva slags rekord?</label>
-      <select ng-model="record.type" multiple class="form-control">
+      <select ng-model="record.type" multiple class="form-control" ng-options="record for record in recordType">
         <option value="shortestTime">Kortest tid</option>
         <option value="longestTime">Lengst tid</option>
         <option value="highestScore">Høyest poengsum</option>
