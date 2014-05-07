@@ -114,7 +114,7 @@
   });
 
 
-  app.get('/api/records/unapproved', function(req, res) {
+  app.get('/api/records/unapproved', function ( req, res ) {
       var unApprovedRecords = [];
 
       searchIndex('records', {
@@ -129,6 +129,46 @@
               res.send(JSON.stringify(unApprovedRecords));
           });
     });
+
+  app.get('/api/records/approved', function ( req, res ) {
+      var approvedRecords = [];
+
+      searchIndex('records', {
+              'match': {
+                status: 'approved'
+              }
+          },function(data) {
+              _.each(data, function(record){
+                record['_source']['_id'] = record._id;
+                approvedRecords.push(record['_source']);
+              });
+              res.send(JSON.stringify(approvedRecords));
+          });
+    });
+
+
+  app.post('/api/record/:id/approve', function ( req, res ) {
+
+    var id = req.params.id;
+    var record = req.body;
+
+    record.status = 'approved';
+
+    if(id && record) {
+
+      client.create({
+        index: 'records',
+        type: 'record',
+        id: id,
+        body: record
+      }, function ( err, resp ) {
+          res.send('success', 200);
+      });
+
+    } else {
+      res.send('Inproper id provided', 404);
+    }
+  });
 
   app.post('/api/record', function(req, res) {
     var record = req.body;

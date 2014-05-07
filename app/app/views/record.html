@@ -11,20 +11,12 @@
   </div>
   <div ng-show="record.nickname && record.email" class="form-group">
     <label for="level-input">Hva slags rekord?</label>
-      <select ng-model="record.type" multiple class="form-control" ng-options="record for record in recordType">
-        <option value="shortestTime">Kortest tid</option>
-        <option value="longestTime">Lengst tid</option>
-        <option value="highestScore">Høyest poengsum</option>
-        <option value="lowestScore">Lavest poengsum</option>
+      <select ng-model="record.type" multiple class="form-control" ng-options="type for type in recordType">
       </select>
   </div>
   <div ng-show="record.type == 'shortestTime' || record.type == 'longestTime'" class="form-group">
     <label for="level-input">Rekorden gjelder</label>
-      <select ng-model="record.lap" multiple class="form-control">
-        <option value="round">Rundetid</option>
-        <option value="track">Hele banen / brettet</option>
-        <option value="game">Hele spillet</option>
-        
+      <select ng-model="record.lap" multiple class="form-control" ng-options="lap for lap in lap">
       </select>
   </div>
   <div ng-show="record.type == 'shortestTime' && record.lap || record.type == 'longestTime' && record.lap" class="form-group">

@@ -10,6 +10,18 @@ angular.module('highscoreApp')
     $scope.levelsList = [];
     $scope.games = [];
     $scope.consoles = [];
+    $scope.recordType = [
+      'shortestTime',
+      'longestTime',
+      'highestScore',
+      'lowestScore'
+    ];
+
+    $scope.lap = [
+      'round',
+      'track',
+      'game'
+    ];
 
     Records.getLevels()
       .success(function ( data ) {
