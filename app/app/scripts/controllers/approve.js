@@ -1,21 +1,9 @@
 'use strict';
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, record) {
-
-  $scope.record = record;
-
-  $scope.ok = function () {
-    $modalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-};
-
 angular.module('highscoreApp')
-  .controller('ApproveCtrl', function ($scope, Records, $modal, $log) {
-    $scope.unapprovedRecords = [];
+  .controller('ApproveCtrl', function ($scope, Records, Utilities) {
+
+    $scope.records = [];
 
     $scope.recordType = [
       'shortestTime',
@@ -30,29 +18,54 @@ angular.module('highscoreApp')
       'game'
     ];
 
-    Records.getUnapprovedRecords()
-      .success(function ( data ) {
-        $scope.unapprovedRecords = data;
-      });
+    $scope.getUrlFriendly = Utilities.getUrlFriendly;
 
-    $scope.open = function (size, record) {
+    $scope.getSafeString = function (unsafeString) {
+      var safeString = unsafeString.replace(/ /g, '_');
 
-      var modalInstance = $modal.open({
-        templateUrl: 'myModalContent.html',
-        controller: ModalInstanceCtrl,
-        size: size,
-        resolve: {
-          record: function () {
-            return record;
-          }
-        }
-      });
+      safeString = safeString.toLowerCase();
 
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
+      return safeString;
+    };
+
+    $scope.getUnapprovedRecords = function() {
+      Records.getUnapprovedRecords()
+        .success(function ( data ) {
+          $scope.records = data;
+        });
+    };
+
+    $scope.getRejectedRecords = function() {
+      Records.getRejectedRecords()
+        .success(function ( data ) {
+          $scope.records = data;
+        });
+    };
+
+    $scope.getUnapprovedRecords();
+
+    $scope.approve = function ( record ) {
+      console.log('bla');
+      Records.approveRecord(record)
+        .success(function () {
+          record.status = 'approved';
+        });
+    };
+
+    $scope.reject = function ( record ) {
+      console.log('bla');
+      Records.rejectRecord(record)
+        .success(function () {
+          record.status = 'rejected';
+        });
+    };
+
+    $scope.unApprove = function ( record ) {
+      console.log('bla');
+      Records.unapproveRecord(record)
+        .success(function() {
+          record.status = 'unapproved';
+        });
     };
 
   });

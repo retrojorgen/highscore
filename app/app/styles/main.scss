@@ -262,20 +262,22 @@ body {
     }
 }
 
-.image-upload-list {
+.image-list {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    .image-upload-container {
-        .image-container {
+    .image-container {
+        display: inline-block;
+        margin-right: 10px;
+        .image {
             width: 100%;
-            max-width: 300px;
-            height: 150px;
+            max-width: 150px;
+            height: 75px;
             border: 1px solid black;
             overflow: hidden;
             margin-bottom: 10px;
-            display: inline-block;
+            display: block;
             .image {
                 width: 100%;
             }
@@ -283,8 +285,8 @@ body {
         .comment {
             vertical-align: top;
             width: 100%;
-            max-width: 350px;
-            display: inline-block;
+            max-width: 150px;
+            display: block;
         }
     }
 }
@@ -294,10 +296,36 @@ body {
     margin-bottom: 10px;
     @include border-radius(5px);
     background-color: rgba(0,0,0,0.05);
+    position: relative;
+
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        &.rejected {
+            background-color: rgba(255,0,0,0.2);
+        }
+        &.approved {
+            background-color: rgba(0,255,0,0.2);
+        }
+    }
 
     .record-list {
         list-style: none;
         padding: 0;
         margin: 0;
+    }
+    .details {
+        height: auto;
+        overflow: hidden;
+        @include transition(all 200ms linear);
+        &.rejected,
+        &.approved {
+            background-color: transparent;
+            height: 0;
+            @include transition(all 200ms linear);
+        }
     }
 }

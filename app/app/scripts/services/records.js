@@ -11,29 +11,32 @@ angular.module('highscoreApp')
       return $http.get('http://127.0.0.1:8080/api/records/unapproved');
     };
 
-    this.getRecords = function(id) {
-      id = 10;
-      return $http.get('json/records.json');
+    this.getRejectedRecords = function() {
+      return $http.get('http://127.0.0.1:8080/api/records/rejected');
     };
 
-    this.getGameRecords = function(id) {
-      id = 10;
-      return $http.get('json/recordsGame.json');
+    this.unapproveRecord = function ( record ) {
+      return $http.put('http://127.0.0.1:8080/api/record/unapprove', record);
     };
 
-    this.getConsoles = function(id) {
-      id = 10;
-      return $http.get('json/consoles.json');
+    this.rejectRecord = function ( record ) {
+      return $http.put('http://127.0.0.1:8080/api/record/reject', record);
     };
 
-    this.getConsole = function(id) {
-      id = 10;
-      return $http.get('json/recordsConsole.json');
+    this.approveRecord = function ( record ) {
+      return $http.put('http://127.0.0.1:8080/api/record/approve', record);
     };
 
-    this.getLevel = function(id) {
-      id = 10;
-      return $http.get('json/recordsLevel.json');
+    this.getLevel = function(console, game, level, allToggle) {
+      var url = '';
+
+      if(allToggle) {
+        url = 'http://127.0.0.1:8080/api/level/' + console + '/' + game + '/' + level + '/all';
+      } else {
+        url = 'http://127.0.0.1:8080/api/level/' + console + '/' + game + '/' + level;
+      }
+
+      return $http.get(url);
     };
 
     this.submitRecord = function(record) {

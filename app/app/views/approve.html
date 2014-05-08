@@ -1,93 +1,105 @@
 <h2>Record approval</h2>
-<div class="records-container" ng-repeat="record in unapprovedRecords">
+<button class="btn btn-lg btn-primary" ng-click="getUnapprovedRecords()">Only approved records</button>
+<button class="btn btn-lg btn-primary" ng-click="getRejectedRecords()">Only rejected records</button>
+<div class="records-container" ng-repeat="record in records">
+  <div class="cover" ng-class="{
+    'rejected': record.status === 'rejected',
+    'approved': record.status === 'approved' 
+  }"></div>
   <form class="form-horizontal" role="form">
-    <ul class="record-list">
-      <li class="record-container">
-      </li>
-    </ul>
   <div class="form-group">
-    <label for="inputNickname" class="col-sm-2 control-label">Nickname:</label>
+    <div class="col-sm-2">
+      <label class="col-sm-2 control-label">Images:</label>
+    </div>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputNickname" placeholder="" ng-model="record.nickname">
+      <ul class="image-list">
+        <li class="image-container" ng-repeat="(key, description) in record.images">
+          <div class="image">
+            <img ng-src="http://127.0.0.1:8080/images/thumbnail/{{record._id}}-{{key}}.jpg">
+          </div>
+          <p class="comment">{{description}}</p>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail" placeholder="" ng-model="record.email">
+  <div class="details" ng-class="{
+    'rejected': record.status === 'rejected',
+    'approved': record.status === 'approved'
+  }">
+    <div class="form-group">
+      <label for="inputNickname" class="col-sm-2 control-label">Nickname:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputNickname" placeholder="" ng-model="record.nickname">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="selectRecordType" class="col-sm-2 control-label">Record type:</label>
-    <div class="col-sm-10">
-      <select id="selectRecordType" ng-model="record.type" multiple class="form-control" ng-model="record.recordType" ng-options="type for type in recordType">
-      </select>
+    <div class="form-group">
+      <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail" placeholder="" ng-model="record.email">
+      </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label for="selectLap" class="col-sm-2 control-label">Record volume:</label>
-    <div class="col-sm-10">
-      <select id="selectLap" ng-model="record.lap" multiple class="form-control" ng-model="record.lap" ng-options="lap for lap in lap">
-      </select>
+    <div class="form-group">
+      <label for="selectRecordType" class="col-sm-2 control-label">Record type:</label>
+      <div class="col-sm-10">
+        <select id="selectRecordType" ng-model="record.type" multiple class="form-control" ng-model="record.recordType" ng-options="type for type in recordType">
+        </select>
+      </div>
     </div>
-  </div>
-
-  <div ng-show="record.time" class="form-group">
-    <label for="inputTime" class="col-sm-2 control-label">Time:</label>
-    <div class="col-sm-10">
-      <input id="inputTime" type="text" class="form-control" placeholder="" ng-model="record.time">
-    </div>
-  </div>
-
-  <div ng-show="record.score" class="form-group">
-    <label for="inputScore" class="col-sm-2 control-label">Score:</label>
-    <div class="col-sm-10">
-      <input id="inputScore" type="text" class="form-control" placeholder="" ng-model="record.score">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputLevel" class="col-sm-2 control-label">Level:</label>
-    <div class="col-sm-10">
-      <input id="inputLevel" type="text" class="form-control" placeholder="" ng-model="record.level">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="inputGame" class="col-sm-2 control-label">Game:</label>
-    <div class="col-sm-10">
-      <input id="inputGame" type="text" class="form-control" placeholder="" ng-model="record.game">
-    </div>
-  </div>
 
     <div class="form-group">
-    <label for="inputConsole" class="col-sm-2 control-label">Console:</label>
-    <div class="col-sm-10">
-      <input id="inputConsole" type="text" class="form-control" placeholder="" ng-model="record.console">
+      <label for="selectLap" class="col-sm-2 control-label">Record volume:</label>
+      <div class="col-sm-10">
+        <select id="selectLap" ng-model="record.lap" multiple class="form-control" ng-model="record.lap" ng-options="lap for lap in lap">
+        </select>
+      </div>
+    </div>
+
+    <div ng-show="record.time" class="form-group">
+      <label for="inputTime" class="col-sm-2 control-label">Time:</label>
+      <div class="col-sm-10">
+        <input id="inputTime" type="text" class="form-control" placeholder="" ng-model="record.time">
+      </div>
+    </div>
+
+    <div ng-show="record.score" class="form-group">
+      <label for="inputScore" class="col-sm-2 control-label">Score:</label>
+      <div class="col-sm-10">
+        <input id="inputScore" type="text" class="form-control" placeholder="" ng-model="record.score">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputLevel" class="col-sm-2 control-label">Level:</label>
+      <div class="col-sm-10">
+        <input id="inputLevel" type="text" class="form-control" placeholder="" ng-model="record.level">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputGame" class="col-sm-2 control-label">Game:</label>
+      <div class="col-sm-10">
+        <input id="inputGame" type="text" class="form-control" placeholder="" ng-model="record.game">
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label for="inputConsole" class="col-sm-2 control-label">Console:</label>
+      <div class="col-sm-10">
+        <input id="inputConsole" type="text" class="form-control" placeholder="" ng-model="record.console">
+      </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-2"></div>
     <div class="col-sm-10">
-      <button class="btn btn-danger" ng-click="open('sm', record)">Reject record</button>
-      <button class="btn btn-success" ng-click="openRejectDialog('approve', record)">Approve record</button>
+      <button class="btn btn-danger" ng-click="reject(record)">Reject record</button>
+      <button class="btn btn-warning" ng-click="unApprove(record)">Unapprove record</button>
+      <button class="btn btn-success" ng-click="approve(record)">Approve record</button>
+      <a target="_blank" ng-href="
+      /#/level/{{getUrlFriendly(record.console)}}/{{getUrlFriendly(record.game)}}/{{getUrlFriendly(record.level)}}">Preview</a>
     </div>
   </div>
 
 
   </form>
 </div>
-
-<script type="text/ng-template" id="myModalContent.html">
-    <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
-    </div>
-    <div class="modal-body">
-      {{record}}
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-    </div>
-</script>

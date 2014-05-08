@@ -89,6 +89,11 @@
                 console.log("Message sent: " + response.message);
             }
         });
+
+      },
+
+      getUrlUnfriendly = function ( name ) {
+        return name.replace(/-/g, ' ');
       };
 
   app.configure(function() {
@@ -114,6 +119,29 @@
   });
 
 
+app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
+      var unApprovedRecords = [],
+          _console = getUrlUnfriendly(req.params.console),
+          _game = getUrlUnfriendly(req.params.game),
+          _level = getUrlUnfriendly(req.params.level);
+
+          console.log(_console, _game, _level);
+
+      searchIndex('records', {
+              'match': {
+                level: _level
+              }
+          },function(data) {
+              _.each(data, function(record){
+                record['_source']['_id'] = record._id;
+                unApprovedRecords.push(record['_source']);
+              });
+              res.send(JSON.stringify(unApprovedRecords));
+          });
+
+    });
+
+
   app.get('/api/records/unapproved', function ( req, res ) {
       var unApprovedRecords = [];
 
@@ -121,6 +149,20 @@
               'match': {
                 status: 'unapproved'
               }
+          },function(data) {
+              _.each(data, function(record){
+                record['_source']['_id'] = record._id;
+                unApprovedRecords.push(record['_source']);
+              });
+              res.send(JSON.stringify(unApprovedRecords));
+          });
+    });
+
+  app.get('/api/records/all', function ( req, res ) {
+      var unApprovedRecords = [];
+
+      searchIndex('records', {
+              'match_all': {}
           },function(data) {
               _.each(data, function(record){
                 record['_source']['_id'] = record._id;
@@ -146,6 +188,57 @@
           });
     });
 
+  app.get('/api/records/rejected', function ( req, res ) {
+      var approvedRecords = [];
+
+      searchIndex('records', {
+              'match': {
+                status: 'rejected'
+              }
+          },function(data) {
+              _.each(data, function(record){
+                record['_source']['_id'] = record._id;
+                approvedRecords.push(record['_source']);
+              });
+              res.send(JSON.stringify(approvedRecords));
+          });
+    });
+
+
+  app.put('/api/record/:status', function ( req, res ) {
+    var record = req.body;
+
+    
+
+    if(req.params.status == 'approve') {
+      record.status = 'approved';
+    };
+
+    if(req.params.status == 'unapprove') {
+      record.status = 'unapproved';
+    };
+
+        if(req.params.status == 'reject') {
+      record.status = 'rejected';
+    };
+
+
+    console.log(record, req.params.status);
+
+      client.index({
+        index: 'records',
+        type: 'record',
+        id: record._id,
+        body: record
+      }, function ( err, resp ) {
+          if( !err ) {
+            res.send('success', 200);
+          } else {
+            res.send('Inproper id provided', 404);
+          }
+      });
+  });
+
 
   app.post('/api/record/:id/approve', function ( req, res ) {
 
@@ -156,17 +249,10 @@
 
     if(id && record) {
 
-      client.create({
-        index: 'records',
-        type: 'record',
-        id: id,
-        body: record
-      }, function ( err, resp ) {
-          res.send('success', 200);
-      });
+
 
     } else {
-      res.send('Inproper id provided', 404);
+      
     }
   });
 

@@ -28,4 +28,8 @@ angular.module('highscoreApp')
     this.getUrlFriendly = function(name) {
       return name.replace(/ /g, '-');
     };
+
+    this.getUrlUnfriendly = function(name) {
+      return name.replace(/-/g, ' ');
+    };
   });

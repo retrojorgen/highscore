@@ -19,19 +19,7 @@ angular
         templateUrl: 'views/approve.html',
         controller: 'ApproveCtrl'
       })
-      .when('/consoles', {
-        templateUrl: 'views/consoles.html',
-        controller: 'ConsolesCtrl'
-      })
-      .when('/consoles/:console', {
-        templateUrl: 'views/consoles.html',
-        controller: 'ConsolesCtrl'
-      })
-      .when('/consoles/:console/:game', {
-        templateUrl: 'views/game.html',
-        controller: 'RecordsgameCtrl'
-      })
-      .when('/consoles/:console/:game/:level', {
+      .when('/level/:console/:game/:level', {
         templateUrl: 'views/level.html',
         controller: 'RecordslevelCtrl'
       })
