@@ -9,6 +9,7 @@ angular.module('highscoreApp')
     $scope.levels = [];
     $scope.levelsList = [];
     $scope.games = [];
+    $scope.temp = {};
     $scope.consoles = [];
     $scope.recordType = [
       'shortestTime',
@@ -34,7 +35,10 @@ angular.module('highscoreApp')
         $scope.games = _.uniq($scope.games);
         $scope.consoles = _.uniq($scope.consoles);
         $scope.levelsList = _.uniq($scope.levelsList);
+
+        console.log($scope.games);
       });
+
 
     $scope.images = [];
 
@@ -46,15 +50,59 @@ angular.module('highscoreApp')
     };
 
     $scope.submitRecord = function () {
+      console.log($scope.record);
       Records.submitRecord($scope.record)
         .success(function(data) {
           console.log(data);
         });
     };
 
-    $scope.onSelect = function ($item) {
+    $scope.setGameAndConsole = function ($item) {
+      console.log($item);
       $scope.record.game = $item.game;
       $scope.record.console = $item.console;
+    };
+
+    $scope.setGame = function ($item) {
+      $scope.record.game = $item;
+    };
+
+    $scope.setConsole = function ($item) {
+      $scope.record.console = $item;
+    };
+
+    $scope.calcHours = function (time) {
+      var hours = (time[0] * 60 * 60)*1000;
+      var minutes = (time[1] * 60) * 1000;
+      var seconds = time[2] * 1000;
+      var milliseconds = time[3];
+
+      return hours + minutes + seconds + milliseconds;
+    };
+
+    $scope.imageCheck = function (images) {
+      if(images) {
+        if(images.length > 1) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    };
+
+    $scope.checkTime = function(time) {
+      if(time) {
+        var _time = time.split(':');
+
+        if(_time.length === 4) {
+          $scope.record.milliseconds = $scope.calcHours(_time);
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
     };
 
   });

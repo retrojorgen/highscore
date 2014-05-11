@@ -68,4 +68,15 @@ angular.module('highscoreApp')
         });
     };
 
+    $scope.update = function ( record ) {
+      Records.updateRecord(record)
+        .success(function () {
+          console.log('success');
+        });
+    };
+
+    $scope.updateMilliseconds = function (time, record) {
+      record.milliseconds = Utilities.calcHours(time);
+    };
+
   });

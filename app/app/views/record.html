@@ -1,64 +1,103 @@
 <h2>Legg inn ny rekord!</h2>
-<form role="form">
+<form role="form" name="form" novalidate>
+
   <div class="form-group">
-    <label for="nickname-input">Hvilket kallenavn skal vises?</label>
-    <input type="text" ng-model="record.nickname" class="form-control" id="nickname-input" placeholder="Eks. Retrojorgen">
+    <label for="nickname-input">Hvilket kallenavn skal vises? 
+    <span ng-show="form.nickname.$valid" class="glyphicon glyphicon-ok"></span>
+    <span ng-show="form.nickname.$invalid && form.nickname.$dirty" class="glyphicon glyphicon-ok"></span>
+    </label>
+    <input type="text" ng-model="record.nickname" name="nickname" class="form-control" placeholder="f.eks. retrojorgen" required />
   </div>
+
   <div class="form-group">
-    <label for="email-input">E-postadressen din</label>
-    <input type="text" ng-model="record.email" class="form-control" id="email-input" placeholder="Eks. retrojorgen@retrojorgen.com">
-    <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer.</p>
+    <label for="email-input">E-postadressen din 
+      <span ng-show="form.mailaddress.$valid" class="glyphicon glyphicon-ok"></span>
+      <span ng-show="form.mailaddress.$invalid && form.mailaddress.$dirty" class="glyphicon glyphicon-remove"></span>
+      </label>
+    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen@com" required />
+    <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer, det må være en e-post du har tilgang til.</p>
   </div>
+
   <div ng-show="record.nickname && record.email" class="form-group">
-    <label for="level-input">Hva slags rekord?</label>
-      <select ng-model="record.type" multiple class="form-control" ng-options="type for type in recordType">
+    <label for="level-input">Hva slags type rekord? 
+      <span ng-show="form.type.$valid" class="glyphicon glyphicon-ok">
+    </label>
+      <select ng-model="record.type" class="form-control" name="type" required>
+        <option value="">Velg en rekordtype</option>
+        <option value="shortestTime">Kortest tid</option>
+        <option value="longestTime">Lengst tid</option>
+        <option value="highestScore">Best poengsum</option>
+        <option value="lowestScore">Lavest poengsum</option>
       </select>
   </div>
   <div ng-show="record.type == 'shortestTime' || record.type == 'longestTime'" class="form-group">
-    <label for="level-input">Rekorden gjelder</label>
-      <select ng-model="record.lap" multiple class="form-control" ng-options="lap for lap in lap">
+    <label for="level-input">Rekorden gjelder
+      <span ng-show="form.lap.$valid" class="glyphicon glyphicon-ok">
+    </label>
+      <select ng-model="record.lap" name="lap" class="form-control" required>
+        <option value="">Velg hva rekorden gjelder</option>
+        <option value="round">Rundetid</ooption>
+        <option value="track">Hele banen</ooption>
+        <option value="game">Hele spillet</ooption>
       </select>
   </div>
   <div ng-show="record.type == 'shortestTime' && record.lap || record.type == 'longestTime' && record.lap" class="form-group">
-    <label for="level-input">Tiden din (TIMER:MINUTTER:SEKUNDER:MILLISEKUNDER) Eks 00:01:23:73</label>
-    <input type="text" ng-model="record.time" class="form-control" id="level-input" placeholder="Eks 00:01:23:73">
+    <label for="level-input">Tiden din (TIMER:MINUTTER:SEKUNDER:MILLISEKUNDER) Eks 00:01:23:73
+
+      <span ng-show="form.time.$valid && checkTime(record.time)" class="glyphicon glyphicon-ok"></span>
+      <span ng-show="form.time.$dirty && !checkTime(record.time)" class="glyphicon glyphicon-remove"></span>
+    </label>
+
+    <input type="text" ng-model="record.time" class="form-control" name="time" id="time-input" placeholder="Eks 00:01:23:73">
   </div>
+
   <div ng-show="record.type == 'highestScore' || record.type == 'lowestScore'" class="form-group">
     <label for="level-input">Poengene dine</label>
-    <input type="text" ng-model="record.score" class="form-control" id="level-input" placeholder="Eks 1251251242">
+    <input type="number" ng-model="record.score" class="form-control" id="level-input" placeholder="Eks 1251251242">
   </div>
+
   <div ng-show="record.time || record.score" class="form-group">
     {{selected}}
     <label for="level-input">Hva heter brettet / banen?</label>
-    <input type="text" ng-model="record.level" typeahead="level.level for level in levels | filter:$viewValue" typeahead-on-select="onSelect($item, $model, $label)" class="form-control">
+    <span ng-show="form.level.$valid" class="glyphicon glyphicon-ok"></span>
+    <input type="text" ng-model="record.level" name="level" typeahead="level.level for level in levels | filter:$viewValue" typeahead-on-select="setGameAndConsole($item, $model, $label)" class="form-control" required />
   </div>
   <p class="help-block" ng-show="images.length > 4">Du har valgt 4 bilder. Hvis du vil laste opp andre bilder, må du slette et av bildene du har valgt.</p>
+
   <div ng-show="record.level" class="form-group">
-    <label for="game-input">Hvilket spill?</label>
-    <input ng-model="record.game" type="text" class="form-control" id="game-input" placeholder="Skriv inn spill">
+    <label for="game-input">Hvilket spill?
+      <span ng-show="form.game.$valid" class="glyphicon glyphicon-ok"></span>
+    </label>
+    <input ng-model="record.game" type="text" name="game" class="form-control" id="game-input" placeholder="Skriv inn spill" typeahead="game for game in games | filter:$gameValue" typeahead-on-select="setGame($item)" required />
   </div>
+
   <div ng-show="record.level" class="form-group">
-    <label for="console-input">Til hvilken konsoll?</label>
-    <input ng-model="record.console" type="text" class="form-control" id="console-input" placeholder="Skriv inn konsollen">
+    <label for="console-input">Til hvilken konsoll?
+      <span ng-show="form.console.$valid" class="glyphicon glyphicon-ok"></span>
+    </label>
+    <input ng-model="record.console" type="text" name="console" class="form-control" id="console-input" placeholder="Skriv inn konsollen" typeahead="console for console in consoles | filter:$consoleValue" typeahead-on-select="setConsole($item)" required />
   </div>
+
   <div ng-show="record.level" class="form-group">
-    <label for="image-upload-input">Last opp bilder</label>
+    <label for="image-upload-input">Last opp bilder
+    <span ng-show="imageCheck(record.images)" class="glyphicon glyphicon-ok"></span>
+    </label>
     <input ng-show="images.length <= 4" type="file" id="image-upload-input" fileread="uploadme.src">
     <p class="help-block" ng-show="images.length > 4">Du har valgt 4 bilder. Hvis du vil laste opp andre bilder, må du slette et av bildene du har valgt.</p>
-    <p class="help-block" ng-show="images.length <= 4">Last opp 2-4 bilder fra forskjellige vinkler som viser rekorden din.</p>
-   <ul class="image-upload-list">
-    <li ng-repeat="image in record.images" class="image-upload-container">
-        <div class="image-container">
-          <img class="image" src="{{image.image}}">
-        </div>
-        <label class="comment">
-          Legg til en kommentar (valgfritt)
-          <textarea ng-model="image.comment" class="form-control" rows="3"></textarea>
-        </label>
+    <p class="help-block" ng-show="images.length <= 4">Last opp 2-4 bilder fra forskjellige vinkler som viser rekorden din. Minst to av bildene bør vise rekorden din.</p>
+   <ul class="image-list">
+    <li ng-repeat="image in record.images" class="image-container">
+      <div class="image">
+        <img class="image" src="{{image.image}}">
+      </div>
+      <label class="comment">
+        Legg til en kommentar (valgfritt)
+        <textarea ng-model="image.comment" class="form-control comment" rows="3"></textarea>
+      </label>
     </li>
    </ul>
   </div>
 
-
-  <button type="submit" class="btn btn-primary" ng-click="submitRecord()">Send til godkjenning</button>
+  <button type="submit" class="btn btn-primary" ng-click="submitRecord()" ng-disabled="form.$invalid">Send til godkjenning</button>
 </form>
+

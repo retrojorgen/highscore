@@ -15,7 +15,7 @@
       <ul class="image-list">
         <li class="image-container" ng-repeat="(key, description) in record.images">
           <div class="image">
-            <img ng-src="http://127.0.0.1:8080/images/thumbnail/{{record._id}}-{{key}}.jpg">
+            <img ng-src="http://127.0.0.1:8080/images/150/{{record._id}}-{{key}}.jpg">
           </div>
           <p class="comment">{{description}}</p>
         </li>
@@ -41,7 +41,7 @@
     <div class="form-group">
       <label for="selectRecordType" class="col-sm-2 control-label">Record type:</label>
       <div class="col-sm-10">
-        <select id="selectRecordType" ng-model="record.type" multiple class="form-control" ng-model="record.recordType" ng-options="type for type in recordType">
+        <select id="selectRecordType" ng-model="record.type" class="form-control" ng-options="type for type in recordType">
         </select>
       </div>
     </div>
@@ -49,7 +49,7 @@
     <div class="form-group">
       <label for="selectLap" class="col-sm-2 control-label">Record volume:</label>
       <div class="col-sm-10">
-        <select id="selectLap" ng-model="record.lap" multiple class="form-control" ng-model="record.lap" ng-options="lap for lap in lap">
+        <select id="selectLap" ng-model="record.lap" class="form-control" ng-model="record.lap" ng-options="lap for lap in lap">
         </select>
       </div>
     </div>
@@ -57,8 +57,10 @@
     <div ng-show="record.time" class="form-group">
       <label for="inputTime" class="col-sm-2 control-label">Time:</label>
       <div class="col-sm-10">
-        <input id="inputTime" type="text" class="form-control" placeholder="" ng-model="record.time">
+        <input id="inputTime" type="text" class="form-control" ng-change="updateMilliseconds(record.time, record)" placeholder="" ng-model="record.time">
+        <p class="help-block">Milliseconds: {{record.milliseconds}}</p>
       </div>
+      
     </div>
 
     <div ng-show="record.score" class="form-group">
@@ -94,9 +96,10 @@
     <div class="col-sm-10">
       <button class="btn btn-danger" ng-click="reject(record)">Reject record</button>
       <button class="btn btn-warning" ng-click="unApprove(record)">Unapprove record</button>
+      <button class="btn btn-primary" ng-click="update(record)">update record</button>
       <button class="btn btn-success" ng-click="approve(record)">Approve record</button>
       <a target="_blank" ng-href="
-      /#/level/{{getUrlFriendly(record.console)}}/{{getUrlFriendly(record.game)}}/{{getUrlFriendly(record.level)}}">Preview</a>
+      /#/records/{{getUrlFriendly(record.console)}}/{{getUrlFriendly(record.game)}}/{{getUrlFriendly(record.level)}}">Preview</a>
     </div>
   </div>
 

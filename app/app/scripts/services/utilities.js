@@ -32,4 +32,15 @@ angular.module('highscoreApp')
     this.getUrlUnfriendly = function(name) {
       return name.replace(/-/g, ' ');
     };
+
+    this.calcHours = function (time) {
+      time = time.split(':');
+
+      var hours = (time[0] * 60 * 60)*1000;
+      var minutes = (time[1] * 60) * 1000;
+      var seconds = time[2] * 1000;
+      var milliseconds = time[3];
+
+      return hours + minutes + seconds + milliseconds;
+    };
   });

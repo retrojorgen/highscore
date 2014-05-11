@@ -47,14 +47,15 @@
 
           console.log(id, index);
 
-          saveImage(img, id + '-' + index, 60, '2000', 'original');
-          saveImage(img, id + '-' + index, 60, '600', 'regular');
-          saveImage(img, id + '-' + index, 60, '250', 'small');
-          saveImage(img, id + '-' + index, 60, '150', 'thumbnail');
+          saveImage(img, id + '-' + index, 60, '1200', '1200');
+          saveImage(img, id + '-' + index, 60, '600', '600');
+          saveImage(img, id + '-' + index, 60, '300', '300');
+          saveImage(img, id + '-' + index, 60, '150', '150');
         });
       },
 
       saveImage = function ( buffer, name, quality, size, type ) {
+        console.log(name, quality, size, type);
         imageMagick(buffer, name)
         .compress('JPEG')
         .resize(size, null)
@@ -119,7 +120,8 @@
       createddate: String,
       type: String,
       lap: String,
-      time: Number,
+      time: String,
+      milliseconds: Number,
       score: Number,
       game: String,
       console: String,
@@ -148,57 +150,158 @@
     });
   });
 
-app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
-      var unApprovedRecords = [],
-          _console = getUrlUnfriendly(req.params.console),
-          _game = getUrlUnfriendly(req.params.game),
-          _level = getUrlUnfriendly(req.params.level);
+ app.get('/api/records', function ( req, res ) {
+    Record.find(function ( err, records ) {
+      if(err) console.error(err);
+      console.log(records);
+      res.send(records);
     });
+ });
 
-
-  app.get('/api/records/unapproved', function ( req, res ) {
-      var unApprovedRecords = [];
+ app.get('/api/records/unapproved', function ( req, res ) {
+    Record.find({status: 'unapproved'}, function ( err, records ) {
+      if(err) console.error(err);
+      console.log(records);
+      res.send(records);
     });
+ });
 
-  app.get('/api/records/all', function ( req, res ) {
-      var unApprovedRecords = [];
-
+app.get('/api/records/rejected', function ( req, res ) {
+    Record.find({status: 'rejected'}, function ( err, records ) {
+      if(err) console.error(err);
+      console.log(records);
+      res.send(records);
     });
+ });
 
-  app.get('/api/records/approved', function ( req, res ) {
-      var approvedRecords = [];
-    });
+app.get('/api/records/:console', function ( req, res) {
+  var console = getUrlUnfriendly(req.params.console);
+  Record.find({ console: console, status: 'approved'}, null, {sort: {milliseconds: 1}}, function (err, records) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      if(records.length === 0) {
+        res.send('failed, no results', 404);
+      } else {
+        res.send(records);
+      }
+    }
+  });
+});
 
-  app.get('/api/records/rejected', function ( req, res ) {
-      var approvedRecords = [];
-    });
+app.get('/api/records/:console/:game', function ( req, res) {
+  var console = getUrlUnfriendly(req.params.console),
+      game = getUrlUnfriendly(req.params.game);
+
+  Record.find({ console: console, game: game, status: 'approved'}, null, {sort: {milliseconds: 1}}, function (err, records) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      if(records.length === 0) {
+        res.send('failed, no results', 404);
+      } else {
+        res.send(records);
+      }
+    }
+  });
+});
+
+app.get('/api/records/:console/:game/:level', function ( req, res) {
+  var console = getUrlUnfriendly(req.params.console),
+      game = getUrlUnfriendly(req.params.game),
+      level = getUrlUnfriendly(req.params.level);
+
+  Record.find({ console: console, game: game, level: level, status: 'approved'}, null, {sort: {milliseconds: 1}}, function (err, records) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      if(records.length === 0) {
+        res.send('failed, no results', 404);
+      } else {
+        res.send(records);
+      }
+    }
+  });
+});
 
 
-  app.put('/api/record/status/:status', function ( req, res ) {
-    var record = req.body;
+app.get('/api/records/:console/:game/:level/all', function ( req, res) {
+  var console = getUrlUnfriendly(req.params.console),
+      game = getUrlUnfriendly(req.params.game),
+      level = getUrlUnfriendly(req.params.level);
 
-    
+  Record.find({ console: console, game: game, level: level}, null, {sort: {milliseconds: 1}}, function (err, records) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      if(records.length === 0) {
+        res.send('failed, no results', 404);
+      } else {
+        res.send(records);
+      }
+    }
+  });
+});
 
-    if(req.params.status == 'approve') {
-      record.status = 'approved';
-    };
 
-    if(req.params.status == 'unapprove') {
-      record.status = 'unapproved';
-    };
+app.get('/api/record/:id/remove', function ( req, res) {
+  var id = req.params.id;
 
-        if(req.params.status == 'reject') {
-      record.status = 'rejected';
-    };
+  Record.findById(id, function ( err, record) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      Record.remove({_id:id}, function ( err ) {
+        if(err) res.send('failed', 404);
+        else res.send('success', 200);
+      });
+    }
+  });
+});
+
+app.get('/api/record/:id/status/:status', function ( req, res) {
+  var id = req.params.id,
+      status = req.params.status;
+
+  Record.findById(id, function ( err, record) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      Record.update({_id:id}, {status: status}, function ( err, numberAffected ) {
+        if(err) res.send('failed', 404);
+        else res.send('success ' + numberAffected, 200);
+      });
+    }
+  });
+});
+
+app.put('/api/record/:id', function ( req, res) {
+  var id = req.params.id,
+      _record = req.body;
+
+  delete _record._id;
+
+  Record.findById(id, function ( err, record) {
+    if(err) {
+      res.send('failed', 404);
+    } else {
+      Record.update({_id:id}, _record, function ( err, numberAffected ) {
+        console.log(err);
+        if(err) res.send('failed', 404);
+        else res.send('success ' + numberAffected, 200);
+      });
+    }
   });
 
+});
 
-  app.post('/api/record', function(req, res) {
+  app.post('/api/record', function ( req, res ) {
+
     var _record = req.body;
     var record = {};
     var images = [];
 
-    _.each(record.images, function(image, index) {
+    _.each(_record.images, function ( image, index ) {
       images.push(image.image);
       _record.images[index] = image.comment;
     });
@@ -206,10 +309,17 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
     _record.status = 'unapproved';
     _record.createddate = new Date();
 
-    record = new Record(record);
-    record.save(function(err, record) {
-      
-    })
+    record = new Record(_record);
+    res.send(_record);
+    console.log(_record.images);
+
+    record.save(function ( err, record ) {
+        console.log(record);
+        res.send(record);
+        saveImages(images, record._id);
+        sendEmail(record.email, 'Rekorden din er sendt til godkjenning', 'Rekorden din blir vanligvis godkjent på max 1 dag', 'Rekorden din blir vanligvis godkjent på max 1 dag');
+    });
+
 
   });
 

@@ -1,170 +1,87 @@
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Luigi Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Mario Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Daisy Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Dry Dry Ruins"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Moo Moo Meadows"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Coconut Mall"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Koopa Cape"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Moonview Highway"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Mushroom Gorge"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DK Summit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DK's Snowboard Cross"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Maple Treeway"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Bowser's Castle"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Toad's Factory"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Wario's Gold Mine"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Grumble Volcano"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Rainbow Road Nintendo Wii"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Peach Beach"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Sherbet Land"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Desert Hills"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "SNES Mario Circuit 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Yoshi Falls"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GBA Shy Guy Beach"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GBA Bowser Castle 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Peach Gardens"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "SNES Ghost Valley 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Delfino Square"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 DK's Jungle Parkway"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN DK Mountain"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Mario Raceway"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Waluigi Stadium"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Mario Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Bowser's Castle"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Luigi Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mushroom Bridge"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Sherbet Land"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Wario Colosseum"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Peach Beach"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mario Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mushroom City"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Dino Dino Jungle"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Baby Park"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Daisy Cruiser"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Yoshi Circuit"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Bowser's Castle"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Dry Dry Desert"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Waluigi Stadium"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "DK Mountain"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Rainbow Road Mario Kart: Double Dash!!"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Luigi Raceway", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Moo Moo Farm", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Koopa Troopa Beach", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Kalimari Desert", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Toad's Turnpike", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Frappe Snowland", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Choco Mountain", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Mario Raceway", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Wario Stadium", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Sherbet Land", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Royal Raceway", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Bowser's Castle", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "D.K.'s Jungle Parkway", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Yoshi Valley", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Banshee Boardwalk", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"game": "Mario Kart 64", "level": "Rainbow Road Mario Kart 64", "console": "Nintendo 64"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Choco Island 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Koopa Beach 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Choco Island 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Vanilla Lake 1"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 4"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Koopa Beach 2"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 3"}
-{"create": {"_index":"levels", "_type": "level"}}
-{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Vanilla Lake 2"}
-{"create": {"_index":"levels", "_type": "level"}}
+[
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Luigi Circuit"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Mario Circuit"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Daisy Circuit"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Dry Dry Ruins"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Moo Moo Meadows"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Coconut Mall"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Koopa Cape"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Moonview Highway"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Mushroom Gorge"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DK Summit"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DK's Snowboard Cross"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Maple Treeway"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Bowser's Castle"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Toad's Factory"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Wario's Gold Mine"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Grumble Volcano"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "Rainbow Road Nintendo Wii"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Peach Beach"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Sherbet Land"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Desert Hills"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "SNES Mario Circuit 3"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Yoshi Falls"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GBA Shy Guy Beach"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GBA Bowser Castle 3"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Peach Gardens"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "SNES Ghost Valley 2"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "DS Delfino Square"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 DK's Jungle Parkway"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN DK Mountain"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Mario Raceway"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Waluigi Stadium"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "GCN Mario Circuit"},
+{"console": "Nintendo Wii", "game": "Mario Kart Wii", "level": "N64 Bowser's Castle"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Luigi Circuit"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mushroom Bridge"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Sherbet Land"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Wario Colosseum"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Peach Beach"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mario Circuit"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Mushroom City"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Dino Dino Jungle"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Baby Park"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Daisy Cruiser"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Yoshi Circuit"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Bowser's Castle"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Dry Dry Desert"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Waluigi Stadium"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "DK Mountain"},
+{"console": "Nintendo Gamecube", "game":"Mario Kart: Double Dash!!", "level": "Rainbow Road Mario Kart: Double Dash!!"},
+{"game": "Mario Kart 64", "level": "Luigi Raceway", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Moo Moo Farm", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Koopa Troopa Beach", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Kalimari Desert", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Toad's Turnpike", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Frappe Snowland", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Choco Mountain", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Mario Raceway", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Wario Stadium", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Sherbet Land", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Royal Raceway", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Bowser's Castle", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "D.K.'s Jungle Parkway", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Yoshi Valley", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Banshee Boardwalk", "console": "Nintendo 64"},
+{"game": "Mario Kart 64", "level": "Rainbow Road Mario Kart 64", "console": "Nintendo 64"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Choco Island 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 3"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Koopa Beach 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Choco Island 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Vanilla Lake 1"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Bowser Castle 3"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Mario Circuit 4"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Donut Plains 3"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Koopa Beach 2"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Ghost Valley 3"},
+{"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Vanilla Lake 2"},
 {"console": "Super Nintendo", "game": "Super Mario Kart", "level": "Rainbow Road Super Mario Kart"}
+]
