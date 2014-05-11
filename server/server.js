@@ -8,6 +8,8 @@
       nodemailer = require("nodemailer"),
       mongoose = require('mongoose'),
       gmailAuth = require('./accountproperties.json'),
+      levels = require('./levels.json'),
+
 
       imageMagick = gm.subClass({ imageMagick: true }),
 
@@ -132,15 +134,19 @@
     console: String
   });
 
-  var record = mongoose.model('record', recordSchema);
-  var level = mongoose.model('level', recordSchema);
+  var Record = mongoose.model('record', recordSchema);
+  var Level = mongoose.model('level', recordSchema);
 
 // Routes ==================
 
   app.get('/api/levels', function(req, res) {
     var levels = [];
+    Level.find(function ( err, levels ) {
+      if(err) console.error(err);
+      console.log(levels);
+      res.send(levels);
+    });
   });
-
 
 app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
       var unApprovedRecords = [],
@@ -188,17 +194,22 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
 
 
   app.post('/api/record', function(req, res) {
-    var record = req.body;
+    var _record = req.body;
+    var record = {};
     var images = [];
 
     _.each(record.images, function(image, index) {
       images.push(image.image);
-      record.images[index] = image.comment;
+      _record.images[index] = image.comment;
     });
 
-    record.status = 'unapproved';
+    _record.status = 'unapproved';
+    _record.createddate = new Date();
 
-    console.log(record);
+    record = new Record(record);
+    record.save(function(err, record) {
+      
+    })
 
   });
 
