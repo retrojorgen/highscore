@@ -127,18 +127,23 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
 
           console.log(_console, _game, _level);
 
-      searchIndex('records', {
-              'match': {
-                level: _level
+        client.search({
+          index: 'records',
+          size: 50,
+          body:
+            {
+              "multi_match" : {
+                "query":    _level,
+                "fields": [ 'level', 'console' ]
               }
-          },function(data) {
-              _.each(data, function(record){
-                record['_source']['_id'] = record._id;
-                unApprovedRecords.push(record['_source']);
-              });
-              res.send(JSON.stringify(unApprovedRecords));
-          });
+            }
 
+        }).then(function (resp) {
+          if(resp.hits) {
+            console.log(resp.hits);
+            res.send(resp.hits);
+          }
+        });
     });
 
 
