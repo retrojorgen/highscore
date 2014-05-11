@@ -6,7 +6,7 @@
       gm = require('gm'),
       _ = require('lodash'),
       nodemailer = require("nodemailer"),
-      elasticsearch = require('elasticsearch'),
+      mongoose = require('mongoose'),
       gmailAuth = require('./accountproperties.json'),
 
       imageMagick = gm.subClass({ imageMagick: true }),
@@ -14,12 +14,6 @@
       app = express(),
 
       smtpTransport = nodemailer.createTransport("SMTP", gmailAuth),
-
-
-      client = new elasticsearch.Client({
-        host: 'localhost:9200'
-        //log: 'trace'
-      }),
 
       allowCrossDomain = function(req, res, next) {
         res.header('Access-Control-Allow-Origin', '*');
@@ -96,6 +90,8 @@
         return name.replace(/-/g, ' ');
       };
 
+// Express config ===================================
+
   app.configure(function() {
     app.use(allowCrossDomain); // Cross domain
     app.use(express.static(__dirname + '/public')); // static file location
@@ -104,18 +100,45 @@
     app.use(express.methodOverride()); // simulate delete and put
   });
 
+
+// Mongoose config ===================================
+
+  mongoose.connect('mongodb://localhost/records');
+
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function callback () {
+    console.log('yoohooo');
+  });
+
+  var recordSchema = mongoose.Schema({
+      nickname: String,
+      email: String,
+      createddate: String,
+      type: String,
+      lap: String,
+      time: Number,
+      score: Number,
+      game: String,
+      console: String,
+      level: String,
+      status: String,
+      images: [String]
+  });
+
+  var levelSchema = mongoose.Schema({
+    level: String,
+    game: String,
+    console: String
+  });
+
+  var record = mongoose.model('record', recordSchema);
+  var level = mongoose.model('level', recordSchema);
+
 // Routes ==================
 
   app.get('/api/levels', function(req, res) {
     var levels = [];
-    searchIndex('levels', {
-            'match_all': {}
-        },function(data) {
-            _.each(data, function(level){
-              levels.push(level['_source']);
-            });
-            res.send(JSON.stringify(levels));
-        });
   });
 
 
@@ -124,93 +147,28 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
           _console = getUrlUnfriendly(req.params.console),
           _game = getUrlUnfriendly(req.params.game),
           _level = getUrlUnfriendly(req.params.level);
-
-          console.log(_console, _game, _level);
-
-        client.search({
-          index: 'records',
-          size: 50,
-          body:
-            {
-              "multi_match" : {
-                "query":    _level,
-                "fields": [ 'level', 'console' ]
-              }
-            }
-
-        }).then(function (resp) {
-          if(resp.hits) {
-            console.log(resp.hits);
-            res.send(resp.hits);
-          }
-        });
     });
 
 
   app.get('/api/records/unapproved', function ( req, res ) {
       var unApprovedRecords = [];
-
-      searchIndex('records', {
-              'match': {
-                status: 'unapproved'
-              }
-          },function(data) {
-              _.each(data, function(record){
-                record['_source']['_id'] = record._id;
-                unApprovedRecords.push(record['_source']);
-              });
-              res.send(JSON.stringify(unApprovedRecords));
-          });
     });
 
   app.get('/api/records/all', function ( req, res ) {
       var unApprovedRecords = [];
 
-      searchIndex('records', {
-              'match_all': {}
-          },function(data) {
-              _.each(data, function(record){
-                record['_source']['_id'] = record._id;
-                unApprovedRecords.push(record['_source']);
-              });
-              res.send(JSON.stringify(unApprovedRecords));
-          });
     });
 
   app.get('/api/records/approved', function ( req, res ) {
       var approvedRecords = [];
-
-      searchIndex('records', {
-              'match': {
-                status: 'approved'
-              }
-          },function(data) {
-              _.each(data, function(record){
-                record['_source']['_id'] = record._id;
-                approvedRecords.push(record['_source']);
-              });
-              res.send(JSON.stringify(approvedRecords));
-          });
     });
 
   app.get('/api/records/rejected', function ( req, res ) {
       var approvedRecords = [];
-
-      searchIndex('records', {
-              'match': {
-                status: 'rejected'
-              }
-          },function(data) {
-              _.each(data, function(record){
-                record['_source']['_id'] = record._id;
-                approvedRecords.push(record['_source']);
-              });
-              res.send(JSON.stringify(approvedRecords));
-          });
     });
 
 
-  app.put('/api/record/:status', function ( req, res ) {
+  app.put('/api/record/status/:status', function ( req, res ) {
     var record = req.body;
 
     
@@ -226,40 +184,8 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
         if(req.params.status == 'reject') {
       record.status = 'rejected';
     };
-
-
-    console.log(record, req.params.status);
-
-      client.index({
-        index: 'records',
-        type: 'record',
-        id: record._id,
-        body: record
-      }, function ( err, resp ) {
-          if( !err ) {
-            res.send('success', 200);
-          } else {
-            res.send('Inproper id provided', 404);
-          }
-      });
   });
 
-
-  app.post('/api/record/:id/approve', function ( req, res ) {
-
-    var id = req.params.id;
-    var record = req.body;
-
-    record.status = 'approved';
-
-    if(id && record) {
-
-
-
-    } else {
-      
-    }
-  });
 
   app.post('/api/record', function(req, res) {
     var record = req.body;
@@ -270,27 +196,10 @@ app.get('/api/level/:console/:game/:level/all', function ( req, res ) {
       record.images[index] = image.comment;
     });
 
-
-
     record.status = 'unapproved';
 
-    client.create({
-      index: 'records',
-      type: 'record',
-      body: record
-    }, function (err, resp) {
+    console.log(record);
 
-        var id = resp._id;
-
-        if(err) {
-            res.send('Document may or may not exist, depending on the moon', 404);
-        }
-
-        saveImages(images, id);
-        sendEmail(record.email, 'Rekorden din er sendt til godkjenning', 'Rekorden din blir vanligvis godkjent på max 1 dag', 'Rekorden din blir vanligvis godkjent på max 1 dag');
-
-        res.send(JSON.stringify({id: id}));
-    });
   });
 
 // Initiate server ==================
