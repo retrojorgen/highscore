@@ -4,7 +4,7 @@ angular.module('highscoreApp')
   .service('Records', function Records($http) {
 
     this.getAllRecords = function() {
-      return $http.get('json/allrecords.json');
+      return $http.get('http://127.0.0.1:8080/api/records');
     };
 
     this.getUnapprovedRecords = function() {
@@ -25,6 +25,10 @@ angular.module('highscoreApp')
 
     this.approveRecord = function ( record ) {
       return $http.put('http://127.0.0.1:8080/api/record/' + record._id + '/status/approved', record);
+    };
+
+    this.getGame = function(console, game) {
+      return $http.get('http://127.0.0.1:8080/api/records/' + console + '/' + game);
     };
 
     this.getLevel = function(console, game, level, allToggle) {

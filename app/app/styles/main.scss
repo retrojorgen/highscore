@@ -79,14 +79,94 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+
 /* Space out content a bit */
 body {
     padding-top: 0;
     padding-bottom: 0;
+    font-family: 'Lato';
+    background-color: #1D201F;
+}
+
+.topbar {
+    width: 100%;
+    position: fixed;
+    background-color: #111212;
+    border-bottom: 1px solid #3a3a3a;
+    position: relative;
+    text-align: right;
+
+    .page-title {
+        position: absolute;
+        color: white;
+        top: 8px;
+        left: 10px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+    .page-menu {
+        padding: 10px;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                font-size: 170pxpx;
+                padding: 20px;
+                display: inline-block;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 900;
+                &.new-record-link-container {
+                    padding: 0;
+                    @include border-radius(10px);
+                    background-color: #3d91c3;
+                    a {
+                        display: inline-block;
+                        padding: 20px;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
 }
 
 * {
     @include box-sizing(border-box);
+}
+
+.level-container {
+    .level-header {
+        .details-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            .title-level {
+                color: white;
+                display: block;
+                padding: 10px;
+                margin: 0;
+            }
+
+            .title-game,
+            .title-console {
+                vertical-align: top;
+                display: inline-block;
+                color: #2d6281;
+                font-size: 20px;
+                padding: 10px;
+                margin: 0;
+            }
+            .title-game {
+                color: #428bca;
+                padding: 10px;
+                margin: 0;
+            }
+        }
+    }
 }
 
 .topbanner {
@@ -252,6 +332,13 @@ body {
 }
 
 .consoles {
+    .title-level {
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 23px;
+        color: white;
+        border-bottom: 1px solid #428bca;
+    }
     h3 {
         font-size: 18px;
     }
@@ -334,6 +421,7 @@ body {
     padding: 0;
     margin: 0;
     .record {
+        vertical-align: top;
         display: inline-block;
         position: relative;
         img {
@@ -344,7 +432,7 @@ body {
             position: absolute;
             text-align: center;
             @include border-radius(50%);
-            padding: 36px 40px;
+            padding: 27px 40px;
             font-size: 40px;
             color: white;
             background-color: #232324;
@@ -389,11 +477,17 @@ body {
 
         }
 
+        &.big {
+            width: 66.5%;
+            float: left;
+        }
+
         &.medium {
-            width: 50%;
+            width: 33.5%;
+            float: right;
             .record-position {
                 font-size: 30px;
-                padding: 24px 30px;
+                padding: 200mspx 30px;
                 right: 15px;
                 bottom: 15px;
             }
@@ -414,6 +508,113 @@ body {
                 padding: 1px 12px;
                 right: 5px;
                 bottom: 5px;
+            }
+        }
+    }
+}
+
+
+.records {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    .record {
+        width: 23%;
+        margin: 1%;
+        display: inline-block;
+
+        position: relative;
+        background-color: #2E3444;
+
+        &:after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border: 0px solid #2E3444;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            @include transition(all 200ms linear);
+        }
+
+
+        &:hover {
+            &:after {
+                border: 10px solid #2E3444;
+                @include transition(all 200ms linear);
+            }
+            .record-details {
+                bottom: 40px;
+                @include transition(all 200ms linear);
+            }
+        }
+
+        .image-container {
+            max-height: 250px;
+            overflow: hidden;
+            margin-bottom: 75px;
+            img {
+                max-width: 100%;
+            }
+        }
+        .record-details {
+            color: white;
+            padding: 10px;
+            width: 100%;
+            background-color: #2E3444;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: left;
+            z-index: 200;
+            @include transition(all 200ms linear);
+            .nickname {
+                padding: 0;
+                margin: 0;
+                font-size: 12px;
+            }
+            .score {
+                font-size: 19px;
+                padding: 0;
+                margin: 0;
+            }
+            .console-game {
+                margin: 0;
+                padding: 0;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.highscore-table {
+    thead {
+        background-color: #428bca;
+        color: white;
+        tr {
+            th {
+                border-bottom: 4px solid #1D201F;
+                font-size: 16px;
+                padding: 14px;
+            }
+        }
+    }
+    td {
+        padding: 10px;
+    }
+    tbody {
+        background-color: #1f3a4b;
+        color: white;
+        tr {
+            td {
+                border-bottom: 2px solid #1D201F;
+                font-size: 16px;
+                padding: 14px;
             }
         }
     }

@@ -1,42 +1,161 @@
-<h1>{{description.level}}</h1>
-<h2>{{description.game}}</h2>
-<h3>{{description.console}}</h3>
-<div class="row consoles">
-  <div class="col-md-6">
-  <ul class="highscore-list">
-    <li class="record" ng-class="{
-        big: (key+1) === 1,
-        medium: (key+1) > 1,
-        first: (key+1) === 1,
-        second: (key+1) === 2,
-        third: (key+1) === 3
-      }" ng-repeat="(key, record) in level">
-      <img ng-show="(key+1) === 1" ng-src="http://127.0.0.1:8080/images/1200/{{record._id}}-0.jpg">
-      <img ng-show="(key+1) > 1" ng-src="http://127.0.0.1:8080/images/600/{{record._id}}-0.jpg">
-      <div class="record-position">{{key+1}}</div>
-      <div class="description">
-        <p class="nickname">{{record.nickname}}</p>
-        <p class="time">{{record.time}}</p>
+<div class="container">
+  <article class="level-container">
+    <header class="level-header">
+      <div class="details-container">
+        <h1 class="title-level">{{description.level}}</h1>
+        <div>
+          <h2 class="title-game">{{description.game}}</h2>
+          <h3 class="title-console">{{description.console}}</h3>
+        </div>
       </div>
-    </li>
-  </ul>
-  </div>
-  <div class="col-md-4">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Rekord</th>
-          <th>Rekordholder</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="(key, record) in level">
-          <td>{{key}}</td>
-          <td>{{record.time}}</td>
-          <td>{{record.nickname}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    </header>
+    <!-- -->
+    <div class="row consoles">
+      <ul class="highscore-list">
+        <li class="record" ng-class="{
+            big: (key+1) === 1,
+            medium: (key+1) > 1,
+            first: (key+1) === 1,
+            second: (key+1) === 2,
+            third: (key+1) === 3
+          }" ng-repeat="(key, record) in level | limitTo: 3">
+          <img ng-show="(key+1) === 1" ng-src="http://127.0.0.1:8080/images/1200/{{record._id}}-0.jpg">
+          <img ng-show="(key+1) > 1" ng-src="http://127.0.0.1:8080/images/600/{{record._id}}-0.jpg">
+          <div class="record-position">{{key+1}}</div>
+          <div class="description">
+            <p class="nickname">{{record.nickname}}</p>
+            <p class="time">{{record.time}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row consoles">
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Beste rundetid</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'shortestTime', lap: 'round'}">
+              <td>{{key}}</td>
+              <td>{{record.time}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Beste totaltid</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'shortestTime', lap: 'track'}">
+              <td>{{key}}</td>
+              <td>{{record.time}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row consoles">
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Verste rundetid</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'longestTime', lap: 'round'}">
+              <td>{{key}}</td>
+              <td>{{record.time}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Verste totaltid</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'longestTime', lap: 'track'}">
+              <td>{{key}}</td>
+              <td>{{record.time}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="row console">
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Beste poengsum</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'highestScore'}">
+              <td>{{key}}</td>
+              <td>{{record.score}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6 col-lg-6">
+        <h4>Laveste poengsum</h4>
+        <table class="table highscore-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rekord</th>
+              <th>Rekordholder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, record) in level | limitTo: 10 | filter: {type: 'lowestScore'}">
+              <td>{{key}}</td>
+              <td>{{record.score}}</td>
+              <td>{{record.nickname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </article>
 </div>

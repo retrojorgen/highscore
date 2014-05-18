@@ -136,8 +136,15 @@
     console: String
   });
 
+  var achievementSchema = mongoose.Schema({
+    email: String,
+    name: String,
+    points: Number
+  });
+
   var Record = mongoose.model('record', recordSchema);
   var Level = mongoose.model('level', recordSchema);
+  var Achievement = mongoose.model('achievement', achievementSchema);
 
 // Routes ==================
 
@@ -151,7 +158,7 @@
   });
 
  app.get('/api/records', function ( req, res ) {
-    Record.find(function ( err, records ) {
+    Record.find({status: 'approved'}, function ( err, records ) {
       if(err) console.error(err);
       console.log(records);
       res.send(records);
@@ -190,10 +197,10 @@ app.get('/api/records/:console', function ( req, res) {
 });
 
 app.get('/api/records/:console/:game', function ( req, res) {
-  var console = getUrlUnfriendly(req.params.console),
+  var _console = getUrlUnfriendly(req.params.console),
       game = getUrlUnfriendly(req.params.game);
 
-  Record.find({ console: console, game: game, status: 'approved'}, null, {sort: {milliseconds: 1}}, function (err, records) {
+  Record.find({ console: _console, game: game, status: 'approved'}, null, {sort: {milliseconds: 1}}, function (err, records) {
     if(err) {
       res.send('failed', 404);
     } else {
@@ -259,10 +266,12 @@ app.get('/api/record/:id/remove', function ( req, res) {
   });
 });
 
-app.get('/api/record/:id/status/:status', function ( req, res) {
+app.put('/api/record/:id/status/:status', function ( req, res) {
+  console.log('hestefjeeeesss');
   var id = req.params.id,
       status = req.params.status;
 
+  console.log(id,status);
   Record.findById(id, function ( err, record) {
     if(err) {
       res.send('failed', 404);
@@ -299,6 +308,7 @@ app.put('/api/record/:id', function ( req, res) {
 
     var _record = req.body;
     var record = {};
+    var achievement = {};
     var images = [];
 
     _.each(_record.images, function ( image, index ) {
@@ -310,14 +320,17 @@ app.put('/api/record/:id', function ( req, res) {
     _record.createddate = new Date();
 
     record = new Record(_record);
+    achievement = new Achievement({email: record._email, name: 'Sendt a record to approval', points: 1});
+
     res.send(_record);
     console.log(_record.images);
 
     record.save(function ( err, record ) {
+        achievement.save();
         console.log(record);
         res.send(record);
         saveImages(images, record._id);
-        sendEmail(record.email, 'Rekorden din er sendt til godkjenning', 'Rekorden din blir vanligvis godkjent på max 1 dag', 'Rekorden din blir vanligvis godkjent på max 1 dag');
+        sendEmail(record.email, 'Rekorden din er sendt til godkjenning', 'Rekorden din blir vanligvis godkjent på 1 dag', 'Rekorden din blir vanligvis godkjent på max 1 dag');
     });
 
 

@@ -23,9 +23,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view="">
-        <div class="container-fluid" ng-view="">
-        </div>
+    <header class="topbar">
+        <h1 class="page-title">Highscore.no</h1>
+        <nav class="page-menu">
+            <ul>
+                <li><a href="#/games">Browse spill</a></li>
+                <li class="new-record-link-container"><a href="#/record">Ny rekord!</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="view-container" ng-view="">
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

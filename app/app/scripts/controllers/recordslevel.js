@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('highscoreApp')
-  .controller('RecordslevelCtrl', function ($scope, $routeParams, Records, Utilities) {
+  .controller('levelCtrl', function ($scope, $routeParams, Records, Utilities) {
 
     $scope.getUrlUnfriendly = Utilities.getUrlUnfriendly;
 
     $scope.allToggle = false;
-    if($routeParams.type === 'all')
+    if($routeParams.type === 'all') {
       $scope.allToggle = true;
+    }
 
     $scope.description = {};
     $scope.description.level = $scope.getUrlUnfriendly($routeParams.level);

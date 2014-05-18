@@ -19,13 +19,17 @@ angular
         templateUrl: 'views/approve.html',
         controller: 'ApproveCtrl'
       })
+      .when('/records/:console/:game/', {
+        templateUrl: 'views/game.html',
+        controller: 'gameCtrl'
+      })
       .when('/records/:console/:game/:level', {
         templateUrl: 'views/level.html',
-        controller: 'RecordslevelCtrl'
+        controller: 'levelCtrl'
       })
       .when('/records/:console/:game/:level/:type', {
         templateUrl: 'views/level.html',
-        controller: 'RecordslevelCtrl'
+        controller: 'levelCtrl'
       })
       .otherwise({
         redirectTo: '/'

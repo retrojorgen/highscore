@@ -1,33 +1,38 @@
-<h2>{{gameRecords.game}} tider, poeng og achievements</h2>
-<div class="row">
-  <div class="col-md-4" ng-repeat="game in gameRecords.levels">
-    <div class="highscore-shortlist-container">
-      <h3>{{game.level}}</h3>
-      <table class="table table-striped">
-        <tr>
-          <th>#</th><th>record</th><th>player</th>
-        </tr>
-        <div class="level-image">
-          <img ng-src="/images/highscores/{{game.records[0].id}}-{{getRecordImageSize(2)}}.jpg">
-          <div class="number-one">
-            <div class="nr">nr.</div>
-            <div class="one">1</div>
+
+<div class="container">
+  <article class="level-container">
+    <header class="level-header">
+      <div class="details-container">
+        <h1 class="title-level">{{gameDetails.game}}</h1>
+        <div>
+          <h2 class="title-console">{{gameDetails.console}}</h2>
+        </div>
+      </div>
+    </header>
+    <div ng-repeat="level in levels">
+        <h3 class="title-level"><a ng-href="/#/records/{{routeParams.console}}/{{routeParams.game}}/{{getUrlFriendly(level)}}">{{level}}</a></h3>
+        <div class="row console">
+
+          <div class="col-md-6 col-lg-6">
+            <h4>Beste banetid</h4>
+            <table class="table highscore-table">
+            <thead>
+            <tr>
+            <th>#</th>
+            <th>Rekord</th>
+            <th>Rekordholder</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, record) in records | limitTo: 3 | filter: {level: level}">
+            <td>{{key}}</td>
+            <td>{{record.time}}</td>
+            <td>{{record.nickname}}</td>
+            </tr>
+            </tbody>
+            </table>
           </div>
         </div>
-        <tr ng-if="game.records[0].time" ng-repeat="(key,record) in game.records | limitTo:3 | orderBy:'time':reverse">
-          <td>{{key+1}}</td>
-          <td>{{getRecordTime(record.time) | date:'HH:mm:ss'}}</td>
-          <td>{{record.user}}</td>
-        </tr>
-
-        <tr ng-if="game.records[0].score" ng-repeat="(key,record) in game.records | limitTo:3 | orderBy:'-score'">
-          <td>{{key+1}}</td>
-          <td ng-if="record.score">{{record.score}} poeng</td>
-          <td>{{record.user}}</td>
-        </tr>
-
-      </table>
-      <button type="button" class="btn btn-primary">Vis alle</button>
     </div>
-  </div>
+  </article>
 </div>
