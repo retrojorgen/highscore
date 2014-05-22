@@ -1,0 +1,66 @@
+<div class="container">
+  <article class="level-container">
+      <header class="level-header">
+        <div class="details-container">
+          <h1 class="title-level">{{convertedParams.level}}</h1>
+          <div>
+            <h2 class="title-game">{{convertedParams.game}}</h2>
+            <h3 class="title-console">{{convertedParams.console}}</h3>
+          </div>
+      </div>
+    </header>
+
+<form>
+  <div class="form-group">
+    <label for="nickname-input">Hvilket kallenavn skal vises? 
+    <span ng-show="form.nickname.$valid" class="glyphicon glyphicon-ok"></span>
+    <span ng-show="form.nickname.$invalid && form.nickname.$dirty" class="glyphicon glyphicon-ok"></span>
+    </label>
+    <input type="text" ng-model="record.nickname" name="nickname" class="form-control" placeholder="f.eks. retrojorgen" required />
+  </div>
+  <div class="form-group">
+    <label for="email-input">E-postadressen din 
+      <span ng-show="form.mailaddress.$valid" class="glyphicon glyphicon-ok"></span>
+      <span ng-show="form.mailaddress.$invalid && form.mailaddress.$dirty" class="glyphicon glyphicon-remove"></span>
+      </label>
+    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen@com" required />
+    <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer, det må være en e-post du har tilgang til.</p>
+  </div>
+  <div ng-show="record.nickname && record.email" class="form-group">
+    <label for="level-input">Hva slags type rekord? 
+      <span ng-show="form.type.$valid" class="glyphicon glyphicon-ok"></span>
+    </label>
+      <select ng-model="record.type" class="form-control" name="type" required>
+        <option value="">Velg en rekordtype</option>
+        <option value="shortestTime">Kortest tid</option>
+        <option value="longestTime">Lengst tid</option>
+        <option value="highestScore">Best poengsum</option>
+        <option value="lowestScore">Lavest poengsum</option>
+      </select>
+  </div>
+  <div ng-show="record.type == 'shortestTime' || record.type == 'longestTime'" class="form-group">
+  {{record}}
+    <label for="level-input">Tiden din (TIMER:MINUTTER:SEKUNDER:MILLISEKUNDER) Eks 00:01:23:73
+
+      <span ng-show="form.time.$valid && checkTime(record.time)" class="glyphicon glyphicon-ok"></span>
+      <span ng-show="form.time.$dirty && !checkTime(record.time)" class="glyphicon glyphicon-remove"></span>
+    </label>
+
+    <input type="text" ng-model="record.time" class="form-control" name="time" id="time-input" placeholder="Eks 00:01:23:73">
+  </div>
+
+  <div ng-show="record.type == 'highestScore' || record.type == 'lowestScore'" class="form-group">
+    <label for="level-input">Poengene dine</label>
+    <input type="number" ng-model="record.score" class="form-control" id="level-input" placeholder="Eks 1251251242">
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click="submitRecord()" ng-disabled="form.$invalid">Send inn</button>
+</form>
+
+<ul>
+  <li ng-repeat="level in levels | orderBy: 'game'">
+    <p><a ng-href="/#/record/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">{{level.game}} - {{level.level}}</a> <a ng-href="/#/live/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">[live]</a></p>
+  </li>
+
+</ul>
+</article>
+</div>

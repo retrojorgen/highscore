@@ -1,0 +1,280 @@
+{
+	"newest": 
+		[
+			{
+				"id": "1",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Flower pot",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "2",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "3",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "4",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "5",
+				"system": "Super Nintendo",
+				"game": "Track and field",
+				"level": "Discos",
+				"type": "Highest score",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": false,
+				"score": 100
+			}
+		],
+	"best": [
+		{
+			"system": "Super Nintendo",
+			"game": "Super Mario Kart",
+			"level": "Flower pot",	
+			"records": 
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "2",
+						"user": "retrojorgen",
+						"time": 160000,
+						"score": false
+					},
+					{
+						"id": "3",
+						"user": "retrojorgen",
+						"time": 110000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 200000,
+						"score": false
+					},
+					{
+						"id": "5",
+						"user": "retrojorgen",
+						"time": 153000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 167000,
+						"score": false
+					}
+				]
+		},
+		{
+			"system": "Nintendo 64",
+			"game": "Mario Kart 64",
+			"level": "Blabla stage",	
+			"records": 
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "2",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "3",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "5",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					}
+				]
+		},
+				{
+			"system": "Nintendo",
+			"game": "Track and field 2",
+			"level": "Discos",
+			"records":
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 300
+					},
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 100
+					},
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 400
+					}
+				]
+		}
+	],
+	"worst": [
+		{
+			"system": "Super Nintendo",
+			"game": "Super Mario Kart",
+			"level": "Flower pot",	
+			"records": 
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "2",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "3",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "5",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					}
+				]
+		},
+		{
+			"system": "Nintendo 64",
+			"game": "Mario Kart 64",
+			"level": "Blabla stage",	
+			"records": 
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "2",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "3",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "4",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					},
+					{
+						"id": "5",
+						"user": "retrojorgen",
+						"time": 150000,
+						"score": false
+					}
+				]
+		},
+		{
+			"system": "Nintendo",
+			"game": "Track and field 2",
+			"level": "Discos",	
+			"records": 
+				[
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 100
+					},
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 200
+					},
+					{
+						"id": "1",
+						"user": "retrojorgen",
+						"time": false,
+						"score": 300
+					}
+				]
+		}
+	]
+}

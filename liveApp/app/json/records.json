@@ -1,0 +1,60 @@
+{
+	"records": 
+		[
+			{
+				"id": "1",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Flower pot",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "2",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "3",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "4",
+				"system": "Super Nintendo",
+				"game": "Super Mario Kart",
+				"level": "Chocolate fields",
+				"type": "Raskeste tid",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": 150000,
+				"score": false
+			},
+			{
+				"id": "5",
+				"system": "Super Nintendo",
+				"game": "Track and field",
+				"level": "Discos",
+				"type": "Highest score",
+				"timestamp": "un Apr 20 2014 21:49:27 GMT+0200 (CEST)",
+				"user": "retrojorgen",
+				"time": false,
+				"score": 100
+			}
+		]
+}
