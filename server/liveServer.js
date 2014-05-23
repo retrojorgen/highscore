@@ -3,6 +3,7 @@
 // set up ==================
   var _ = require('lodash'),
       mongoose = require('mongoose'),
+      levels = require('./levels.json'),
       io = require('socket.io').listen(6060),
 
       allowCrossDomain = function(req, res, next) {
@@ -14,7 +15,20 @@
 
       getUrlUnfriendly = function ( name ) {
         return name.replace(/-/g, ' ');
-      };''
+      },
+
+      saveLevels = function(levels) {
+        _.each(levels, function(level) {
+          var _level  = new Level(level);
+
+          _level.save(function(err, __level) {
+            if(err) {
+              console.log(err);
+            }
+          });
+        });
+      };
+
 
 // Mongoose config ===================================
 
@@ -58,12 +72,16 @@
   var Level = mongoose.model('level', recordSchema);
   var Achievement = mongoose.model('achievement', achievementSchema);
 
+
+  saveLevels(levels);
+
 // Events ==================
 
 io.sockets.on('connection', function (socket) {
 
   socket.on('get levels', function() {
     Level.find({}, function ( err, levels ) {
+      console.log(levels);
       if(err) {
         socket.emit('get levels failed', err);
         return;
@@ -71,6 +89,36 @@ io.sockets.on('connection', function (socket) {
 
       socket.emit('levels done', levels);
     });
+  });
+
+  socket.on('add level', function(level) {
+    var newLevel = new Level(level);
+    newLevel.save(function(err, _level) {
+      if(err) {
+        socket.emit('add level failed', err);
+        return;
+      }
+
+      socket.emit('add level done', _level);
+    });
+  });
+
+  socket.on('get records', function(selection) {
+    Record.find(
+      {
+        console: selection.console,
+        game: selection.game,
+        level: selection.level,
+        type: selection.type,
+        status: 'approved'
+      }, function(err, records) {
+        if(err) {
+          socket.emit('get records failed', err);
+          return;
+        }
+
+        socket.emit('get records done', records);
+      });
   });
 
   socket.on('new record', function(record) {

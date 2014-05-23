@@ -1,8 +1,36 @@
-<div class="container">
-  <h1>Highscore for</h1>
-  <div class="records">
-    <div class="record" ng-repeat="record in records">
-      {{record}}
-    </div>
-  </div> 
+<div class="container retro">
+  <article class="level-container">
+      <header class="level-header">
+        <div class="details-container">
+          <h1 class="title-level">{{convertedParams.level}}</h1>
+          <div>
+            <h2 class="title-game">{{convertedParams.game}}</h2>
+            <h3 class="title-console">{{convertedParams.console}}</h3>
+          </div>
+      </div>
+    </header>
+  <table class="table retro">
+        <thead>
+          <tr>
+              <th>
+                Rank
+              </th>
+              <th>
+                Score
+              </th>
+              <th>
+                Name
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="(key,record) in records | orderBy:'milliseconds'">
+            <td>{{key+1}}</td>
+            <td ng-show="record.type == 'shortestTime' || record.type == 'longestTime'">{{record.time}}</td>
+            <td ng-show="record.type == 'highestScore' || record.type == 'lowestScore'">{{record.score}}</td>
+            <td>{{record.nickname}}</td>
+          </tr>
+      </tbody>
+  </table>
+  </article>
 </div>

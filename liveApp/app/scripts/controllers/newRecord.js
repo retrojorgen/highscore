@@ -9,6 +9,8 @@ angular.module('highscoreApp')
       lap: 'track'
     };
 
+    $scope.level = {};
+
     $scope.levels = {};
 
     $scope.getUrlFriendly = Utilities.getUrlFriendly;
@@ -29,6 +31,16 @@ angular.module('highscoreApp')
       });
     });
 
+    socket.on('add level done', function(level) {
+      $scope.$apply(function() {
+        $scope.levels.push(level);
+      });
+    });
+
+    $scope.submitLevel = function() {
+      socket.emit('add level', level);
+    };
+
     $scope.submitRecord = function () {
       $scope.record.console = $scope.convertedParams.console;
       $scope.record.game = $scope.convertedParams.game;
@@ -40,8 +52,10 @@ angular.module('highscoreApp')
     };
 
     socket.on('new record done', function(){
-      $scope.record = {
-        lap: 'track'
-      }
+      $scope.$apply(function() {
+        $scope.record = {
+          lap: 'track'
+        };
+      });
     });
   });

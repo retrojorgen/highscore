@@ -12,14 +12,14 @@
 
 <form>
   <div class="form-group">
-    <label for="nickname-input">Hvilket kallenavn skal vises? 
+    <label for="nickname-input">Hvilket kallenavn skal vises?
     <span ng-show="form.nickname.$valid" class="glyphicon glyphicon-ok"></span>
     <span ng-show="form.nickname.$invalid && form.nickname.$dirty" class="glyphicon glyphicon-ok"></span>
     </label>
     <input type="text" ng-model="record.nickname" name="nickname" class="form-control" placeholder="f.eks. retrojorgen" required />
   </div>
   <div class="form-group">
-    <label for="email-input">E-postadressen din 
+    <label for="email-input">E-postadressen din
       <span ng-show="form.mailaddress.$valid" class="glyphicon glyphicon-ok"></span>
       <span ng-show="form.mailaddress.$invalid && form.mailaddress.$dirty" class="glyphicon glyphicon-remove"></span>
       </label>
@@ -27,7 +27,7 @@
     <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer, det må være en e-post du har tilgang til.</p>
   </div>
   <div ng-show="record.nickname && record.email" class="form-group">
-    <label for="level-input">Hva slags type rekord? 
+    <label for="level-input">Hva slags type rekord?
       <span ng-show="form.type.$valid" class="glyphicon glyphicon-ok"></span>
     </label>
       <select ng-model="record.type" class="form-control" name="type" required>
@@ -56,6 +56,20 @@
   <button type="submit" class="btn btn-primary" ng-click="submitRecord()" ng-disabled="form.$invalid">Send inn</button>
 </form>
 
+<h2>Baner</h2>
+<form>
+  <div class="form-group">
+    <label for="console-input"></label>
+    <input ng-model="level.console" name="console-input" id="console-input" type="text" class="form-control" placeholder="Console.." required>
+    <label for="game-input"></label>
+    <input ng-model="level.game" name="game-input" id="game-input" type="text" class="form-control" placeholder="game.." required>
+    <label for="level-input"></label>
+    <input ng-model="level.level" name="level-input" id="level-input" type="text" class="form-control" placeholder="level.." required>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" ng-click="submitLevel()" ng-disabled="form.$invalid">Save level</button>
+  </div>
+</form>
 <ul>
   <li ng-repeat="level in levels | orderBy: 'game'">
     <p><a ng-href="/#/record/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">{{level.game}} - {{level.level}}</a> <a ng-href="/#/live/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">[live]</a></p>
