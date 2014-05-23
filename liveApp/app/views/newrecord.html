@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container new-record">
   <article class="level-container">
       <header class="level-header">
         <div class="details-container">
@@ -23,10 +23,10 @@
       <span ng-show="form.mailaddress.$valid" class="glyphicon glyphicon-ok"></span>
       <span ng-show="form.mailaddress.$invalid && form.mailaddress.$dirty" class="glyphicon glyphicon-remove"></span>
       </label>
-    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen.com" required />
+    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen.com" />
     <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer, det må være en e-post du har tilgang til.</p>
   </div>
-  <div ng-show="record.nickname && record.email" class="form-group">
+  <div ng-show="record.nickname" class="form-group">
     <label for="level-input">Hva slags type rekord?
       <span ng-show="form.type.$valid" class="glyphicon glyphicon-ok"></span>
     </label>

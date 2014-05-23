@@ -6,13 +6,15 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
-@include font-face("Retro", font-files("PressStart2P-Regular.ttf"));
-
-
 // endbower
 
 
+
+
 /* Space out content a bit */
+
+
+
 body, html {
     padding-top: 0;
     padding-bottom: 0;
@@ -22,7 +24,19 @@ body, html {
     margin: 0;
 }
 
+@include font-face("Retro", font-files("PressStart2P-Regular.ttf"));
+
+
+.fullScreen {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .header {
+    position: relative;
     &.retro {
         font-family: "Retro";
         width: 100%;
@@ -58,6 +72,7 @@ body, html {
 
 .container {
     max-width: 600px;
+    position: relative;
     &.retro {
         font-family: "Retro";
         .level-container {
@@ -674,4 +689,66 @@ body, html {
             }
         }
     }
+}
+
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .record-line
+  class
+*/
+.record-line.ng-enter, .record-line.ng-move {
+  -webkit-transition:0.5s linear all;
+  -moz-transition:0.5s linear all;
+  -o-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.record-line.ng-enter.ng-enter-active,
+.record-line.ng-move.ng-move-active {
+  opacity:1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .record-line class
+*/
+.record-line.ng-leave {
+  -webkit-animation:0.5s my_animation;
+  -moz-animation:0.5s my_animation;
+  -o-animation:0.5s my_animation;
+  animation:0.5s my_animation;
+}
+
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+/*
+  Unfortunately each browser vendor requires
+  its own definition of keyframe animation code...
+*/
+@-webkit-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-moz-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-o-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
 }

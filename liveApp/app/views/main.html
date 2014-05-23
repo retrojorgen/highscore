@@ -48,7 +48,7 @@
           </tr>
       </thead>
       <tbody>
-          <tr ng-repeat="(key,record) in records | orderBy:'milliseconds'">
+          <tr ng-repeat="(key,record) in records | orderBy:'milliseconds'" class="record-line">
             <td>{{key+1}}</td>
             <td ng-show="record.type == 'shortestTime' || record.type == 'longestTime'">{{record.time}}</td>
             <td ng-show="record.type == 'highestScore' || record.type == 'lowestScore'">{{record.score}}</td>

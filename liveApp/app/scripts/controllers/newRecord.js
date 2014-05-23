@@ -3,6 +3,8 @@
 angular.module('highscoreApp')
   .controller('newRecordCtrl', function ($scope, $routeParams, Records, Utilities, socketio) {
 
+
+    $('canvas').hide();
     var socket = socketio.connect('http://localhost:6060');
 
     $scope.record = {
@@ -49,7 +51,11 @@ angular.module('highscoreApp')
 
       $scope.record.images = [];
 
-      if($scope.record.type == 'shortestTime' || $scope.record.type === 'longestTime') {
+      if(!$scope.record.email) {
+        $scope.record.email = '';
+      }
+
+      if($scope.record.type === 'shortestTime' || $scope.record.type === 'longestTime') {
         $scope.record.milliseconds = Utilities.calcHours($scope.record.time);
       }
 
