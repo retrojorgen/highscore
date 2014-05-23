@@ -38,15 +38,20 @@ angular.module('highscoreApp')
     });
 
     $scope.submitLevel = function() {
-      socket.emit('add level', level);
+      console.log('submit level', $scope.level);
+      socket.emit('add level', $scope.level);
     };
 
     $scope.submitRecord = function () {
       $scope.record.console = $scope.convertedParams.console;
       $scope.record.game = $scope.convertedParams.game;
       $scope.record.level = $scope.convertedParams.level;
-      $scope.record.milliseconds = Utilities.calcHours($scope.record.time);
+
       $scope.record.images = [];
+
+      if($scope.record.type == 'shortestTime' || $scope.record.type === 'longestTime') {
+        $scope.record.milliseconds = Utilities.calcHours($scope.record.time);
+      }
 
       socket.emit('new record', $scope.record);
     };

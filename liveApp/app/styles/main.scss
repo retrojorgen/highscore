@@ -13,11 +13,47 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 
 /* Space out content a bit */
-body {
+body, html {
     padding-top: 0;
     padding-bottom: 0;
     font-family: 'Lato';
     background-color: #1D201F;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    &.retro {
+        font-family: "Retro";
+        width: 100%;
+        height: auto;
+        text-align: center;
+
+        ul {
+            width: auto;
+            margin: 0 auto;
+            text-align: center;
+            li{
+                display: inline-block;
+                padding: 10px;
+                &.selected {
+                    a {
+                        color: white;
+                        text-decoration: underline;
+                    }
+                }
+                a {
+                    color: #a7a7cb;
+                    font-size: 10px;
+                    text-shadow:2px 2px #0a245b;
+                    &:hover {
+                        color: lighten(#a7a7cb, 10%);
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 .container {

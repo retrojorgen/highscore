@@ -1,3 +1,27 @@
+<div class="header retro">
+  <ul>
+    <li ng-class="{selected: params.type === 'shortestTime'}">
+      <a ng-href="/#/live/{{params.console}}/{{params.game}}/{{params.level}}/shortestTime">
+        Korteste tid
+      </a>
+    </li>
+    <li ng-class="{selected: params.type === 'longestTime'}">
+      <a ng-href="/#/live/{{params.console}}/{{params.game}}/{{params.level}}/longestTime">
+        Lengst tid
+      </a>
+    </li>
+    <li ng-class="{selected: params.type === 'highestScore'}">
+      <a ng-href="/#/live/{{params.console}}/{{params.game}}/{{params.level}}/highestScore">
+        Høyest poengsum
+      </a>
+    </li>
+    <li ng-class="{selected: params.type === 'lowestScore'}">
+      <a ng-href="/#/live/{{params.console}}/{{params.game}}/{{params.level}}/lowestScore">
+        Lavest poengsum
+      </a>
+    </li>
+  </ul>
+</div>
 <div class="container retro">
   <article class="level-container">
       <header class="level-header">

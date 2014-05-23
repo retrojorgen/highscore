@@ -23,7 +23,7 @@
       <span ng-show="form.mailaddress.$valid" class="glyphicon glyphicon-ok"></span>
       <span ng-show="form.mailaddress.$invalid && form.mailaddress.$dirty" class="glyphicon glyphicon-remove"></span>
       </label>
-    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen@com" required />
+    <input type="email" ng-model="record.email" name="mailaddress" class="form-control" placeholder="f.eks. retrojorgen@retrojorgen.com" required />
     <p class="help-block">E-posten din er ikke synlig for andre brukere, og blir kun brukt til oppdateringer, det må være en e-post du har tilgang til.</p>
   </div>
   <div ng-show="record.nickname && record.email" class="form-group">
@@ -72,7 +72,7 @@
 </form>
 <ul>
   <li ng-repeat="level in levels | orderBy: 'game'">
-    <p><a ng-href="/#/record/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">{{level.game}} - {{level.level}}</a> <a ng-href="/#/live/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">[live]</a></p>
+    <p><a ng-href="/#/record/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}">{{level.game}} - {{level.level}}</a> <a ng-href="/#/live/{{getUrlFriendly(level.console)}}/{{getUrlFriendly(level.game)}}/{{getUrlFriendly(level.level)}}/shortestTime">[live]</a></p>
   </li>
 
 </ul>

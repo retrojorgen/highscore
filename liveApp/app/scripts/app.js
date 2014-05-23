@@ -7,7 +7,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/live/:console/:game/:level', {
+      .when('/live/:console/:game/:level/:type', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
