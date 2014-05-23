@@ -103,6 +103,30 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
+  socket.on('update record', function(record) {
+    Record.update({_id: record._id}, record, function(err, _record) {
+      if(err) {
+        console.log(err);
+        socket.emit('update record failed', err);
+        return err;
+      }
+
+      socket.emit('update record done', record);
+    });
+  });
+
+  socket.on('delete record', function(record) {
+    Record.findByIdAndRemove(record._id, function(err, record) {
+      if(err) {
+        console.log(err);
+        socket.emit('delete record failed');
+        return;
+      }
+
+      socket.emit('delete record done', record);
+    });
+  });
+
   socket.on('get records', function(selection) {
     Record.find(
       {

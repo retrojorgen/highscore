@@ -50,9 +50,23 @@
       <tbody>
           <tr ng-repeat="(key,record) in records | orderBy:'milliseconds'" class="record-line">
             <td>{{key+1}}</td>
-            <td ng-show="record.type == 'shortestTime' || record.type == 'longestTime'">{{record.time}}</td>
-            <td ng-show="record.type == 'highestScore' || record.type == 'lowestScore'">{{record.score}}</td>
-            <td>{{record.nickname}}</td>
+            <td ng-show="record.type == 'shortestTime' || record.type == 'longestTime'">
+              <div ng-click="setEditRecord(record)">{{record.time}}</div>
+              <div ng-show="editRecord._id === record._id"><input type="text" ng-model="editRecord.time"></div>
+            </td>
+            <td ng-show="record.type == 'highestScore' || record.type == 'lowestScore'">
+              <div ng-click="setEditRecord(record)">{{record.score}}</div>
+              <div ng-show="editRecord._id === record._id"><input type="text" ng-model="editRecord.score"></div>
+            </td>
+            <td>
+              {{record.nickname}}
+              <div ng-show="editRecord._id === record._id">
+                <div ng-show="editRecord._id === record._id"><input type="text" ng-model="editRecord.nickname"></div>
+                <button class="btn btn-primary" ng-click="updateRecord(record)">Update</button>
+                <button class="btn btn-primary" ng-click="deleteRecord(record)">Delete</button>
+                <button class="btn btn-primary" ng-click="closeEditRecord()">close</button>
+              </div>
+            </td>
           </tr>
       </tbody>
   </table>
